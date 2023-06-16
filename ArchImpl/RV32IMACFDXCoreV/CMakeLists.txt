@@ -1,4 +1,4 @@
-# Generated on Mon, 29 May 2023 08:17:20 +0200.
+# Generated on Fri, 16 Jun 2023 15:27:33 +0200.
 #
 # This file contains the CMake build info for the RV32IMACFDXCoreV core architecture.
 
@@ -10,20 +10,18 @@ ADD_LIBRARY(${PROJECT_NAME} SHARED
 	RV32IMACFDXCoreVArchSpecificImp.cpp
 	RV32IMACFDXCoreVInstr.cpp
 	RV32IMACFDXCoreV_RV32IInstr.cpp
-	RV32IMACFDXCoreV_RV32ICInstr.cpp
 	RV32IMACFDXCoreV_RV32MInstr.cpp
+	RV32IMACFDXCoreV_ZicsrInstr.cpp
 	RV32IMACFDXCoreV_RV32FInstr.cpp
-	RV32IMACFDXCoreV_RV32FCInstr.cpp
 	RV32IMACFDXCoreV_RV32DInstr.cpp
-	RV32IMACFDXCoreV_RV32DCInstr.cpp
 	RV32IMACFDXCoreV_ZifenceiInstr.cpp
+	RV32IMACFDXCoreV_XCoreVHwlpInstr.cpp
 	RV32IMACFDXCoreV_XCoreVSimdInstr.cpp
 	RV32IMACFDXCoreV_XCoreVAluInstr.cpp
 	RV32IMACFDXCoreV_XCoreVBranchImmediateInstr.cpp
 	RV32IMACFDXCoreV_XCoreVMemInstr.cpp
 	RV32IMACFDXCoreV_XCoreVMacInstr.cpp
 	RV32IMACFDXCoreV_tum_retInstr.cpp
-	RV32IMACFDXCoreV_tum_csrInstr.cpp
 	RV32IMACFDXCoreV_RV32AInstr.cpp
 	RV32IMACFDXCoreV_tum_rvaInstr.cpp
 	RV32IMACFDXCoreV_tum_semihostingInstr.cpp

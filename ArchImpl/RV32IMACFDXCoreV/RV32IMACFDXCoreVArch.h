@@ -1,5 +1,5 @@
 /**
- * Generated on Mon, 29 May 2023 08:17:20 +0200.
+ * Generated on Fri, 16 Jun 2023 15:27:33 +0200.
  *
  * This file contains the architecture class for the RV32IMACFDXCoreV core architecture.
  */
@@ -17,8 +17,6 @@
 
 extern const char * const reg_name[];
 
-extern etiss::instr::InstructionGroup ISA16_RV32IMACFDXCoreV;
-extern etiss::instr::InstructionClass ISA16_RV32IMACFDXCoreVClass;
 extern etiss::instr::InstructionGroup ISA32_RV32IMACFDXCoreV;
 extern etiss::instr::InstructionClass ISA32_RV32IMACFDXCoreVClass;
 

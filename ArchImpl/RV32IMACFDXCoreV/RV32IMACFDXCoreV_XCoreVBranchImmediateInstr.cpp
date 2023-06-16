@@ -1,5 +1,5 @@
 /**
- * Generated on Mon, 29 May 2023 08:17:20 +0200.
+ * Generated on Fri, 16 Jun 2023 15:27:33 +0200.
  *
  * This file contains the instruction behavior models of the XCoreVBranchImmediate
  * instruction set for the RV32IMACFDXCoreV core architecture.
@@ -52,20 +52,57 @@ imm += R_imm_12.read(ba) << 12;
 		cp.code() = std::string("//CV_BEQIMM\n");
 
 // -----------------------------------------------------------------------------
-cp.code() += "cpu->nextPc = " + std::to_string(ic.current_address_ + 4U) + "U;\n";
-cp.code() += "if (*((RV32IMACFDXCoreV*)cpu)->X[" + std::to_string(rs1 % 32U) + "U] == " + std::to_string(((etiss_int8)((simm5) << (3)) >> (3))) + ") {\n";
-if (imm % 2U) {
-cp.code() += "cpu->exception = 0; raise(cpu, system, plugin_pointers, 0U, 0U);\n";
-cp.code() += "goto instr_exit_" + std::to_string(ic.current_address_) + ";\n";
+{
+cp.code() += "{\n";
+cp.code() += "cpu->nextPc = " + std::to_string(ic.current_address_ + 4ULL) + "ULL;\n";
+cp.code() += "}\n";
 }
-else {
-cp.code() += "cpu->nextPc = " + std::to_string(ic.current_address_ + ((etiss_int16)((imm) << (3)) >> (3))) + ";\n";
+{
+cp.code() += "{\n";
+cp.code() += "if (" + std::to_string(ic.current_address_) + "ULL == ((RV32IMACFDXCoreV*)cpu)->lpend_0 && ((RV32IMACFDXCoreV*)cpu)->lpcount_0 != 0ULL) {\n";
+{
+cp.code() += "{\n";
+cp.code() += "cpu->nextPc = ((RV32IMACFDXCoreV*)cpu)->lpstart_0;\n";
+cp.code() += "((RV32IMACFDXCoreV*)cpu)->lpcount_0 = ((RV32IMACFDXCoreV*)cpu)->lpcount_0 - 1ULL;\n";
+cp.code() += "}\n";
 }
 cp.code() += "}\n";
+cp.code() += "}\n";
+}
+cp.code() += "cpu->nextPc = " + std::to_string(ic.current_address_ + 4ULL) + "ULL;\n";
+{
+cp.code() += "{\n";
+cp.code() += "if (*((RV32IMACFDXCoreV*)cpu)->X[" + std::to_string(rs1 % 32ULL) + "ULL] == " + std::to_string(((etiss_int8)(((etiss_int8)simm5) << (3)) >> (3))) + "LL) {\n";
+{
+cp.code() += "{\n";
+if (imm % 4ULL) {
+{
+cp.code() += "{\n";
+{
+cp.code() += "{\n";
+cp.code() += "raise(cpu, system, plugin_pointers, 0ULL, 0ULL);\n";
+cp.code() += "goto instr_exit_" + std::to_string(ic.current_address_) + ";\n";
+cp.code() += "}\n";
+}
+cp.code() += "}\n";
+}
+}
+else {
+{
+cp.code() += "{\n";
+cp.code() += "cpu->nextPc = " + std::to_string(ic.current_address_ + ((etiss_int16)(((etiss_int16)imm) << (3)) >> (3))) + "LL;\n";
+cp.code() += "}\n";
+}
+}
+cp.code() += "}\n";
+}
+cp.code() += "}\n";
+cp.code() += "}\n";
+}
 cp.code() += "instr_exit_" + std::to_string(ic.current_address_) + ":\n";
 cp.code() += "cpu->instructionPointer = cpu->nextPc;\n";
 // -----------------------------------------------------------------------------
-		cp.getRegisterDependencies().add(reg_name[rs1 % 32U], 32);
+		cp.getRegisterDependencies().add(reg_name[rs1 % 32ULL], 32);
 		cp.getAffectedRegisters().add("instructionPointer", 32);
 	}
 	{
@@ -74,7 +111,7 @@ cp.code() += "cpu->instructionPointer = cpu->nextPc;\n";
 		cp.code() = std::string("//CV_BEQIMM\n");
 
 // -----------------------------------------------------------------------------
-cp.code() += "if (cpu->return_pending | cpu->exception | cpu->nextPc != " + std::to_string(ic.current_address_ + 4) + ") return cpu->exception;\n";
+cp.code() += "if (cpu->return_pending | cpu->exception | cpu->nextPc != " + std::to_string(ic.current_address_ + 4) + "ULL) return cpu->exception;\n";
 // -----------------------------------------------------------------------------
 	}
 
@@ -148,20 +185,57 @@ imm += R_imm_12.read(ba) << 12;
 		cp.code() = std::string("//CV_BNEIMM\n");
 
 // -----------------------------------------------------------------------------
-cp.code() += "cpu->nextPc = " + std::to_string(ic.current_address_ + 4U) + "U;\n";
-cp.code() += "if (*((RV32IMACFDXCoreV*)cpu)->X[" + std::to_string(rs1 % 32U) + "U] != " + std::to_string(((etiss_int8)((simm5) << (3)) >> (3))) + ") {\n";
-if (imm % 2U) {
-cp.code() += "cpu->exception = 0; raise(cpu, system, plugin_pointers, 0U, 0U);\n";
-cp.code() += "goto instr_exit_" + std::to_string(ic.current_address_) + ";\n";
+{
+cp.code() += "{\n";
+cp.code() += "cpu->nextPc = " + std::to_string(ic.current_address_ + 4ULL) + "ULL;\n";
+cp.code() += "}\n";
 }
-else {
-cp.code() += "cpu->nextPc = " + std::to_string(ic.current_address_ + ((etiss_int16)((imm) << (3)) >> (3))) + ";\n";
+{
+cp.code() += "{\n";
+cp.code() += "if (" + std::to_string(ic.current_address_) + "ULL == ((RV32IMACFDXCoreV*)cpu)->lpend_0 && ((RV32IMACFDXCoreV*)cpu)->lpcount_0 != 0ULL) {\n";
+{
+cp.code() += "{\n";
+cp.code() += "cpu->nextPc = ((RV32IMACFDXCoreV*)cpu)->lpstart_0;\n";
+cp.code() += "((RV32IMACFDXCoreV*)cpu)->lpcount_0 = ((RV32IMACFDXCoreV*)cpu)->lpcount_0 - 1ULL;\n";
+cp.code() += "}\n";
 }
 cp.code() += "}\n";
+cp.code() += "}\n";
+}
+cp.code() += "cpu->nextPc = " + std::to_string(ic.current_address_ + 4ULL) + "ULL;\n";
+{
+cp.code() += "{\n";
+cp.code() += "if (*((RV32IMACFDXCoreV*)cpu)->X[" + std::to_string(rs1 % 32ULL) + "ULL] != " + std::to_string(((etiss_int8)(((etiss_int8)simm5) << (3)) >> (3))) + "LL) {\n";
+{
+cp.code() += "{\n";
+if (imm % 4ULL) {
+{
+cp.code() += "{\n";
+{
+cp.code() += "{\n";
+cp.code() += "raise(cpu, system, plugin_pointers, 0ULL, 0ULL);\n";
+cp.code() += "goto instr_exit_" + std::to_string(ic.current_address_) + ";\n";
+cp.code() += "}\n";
+}
+cp.code() += "}\n";
+}
+}
+else {
+{
+cp.code() += "{\n";
+cp.code() += "cpu->nextPc = " + std::to_string(ic.current_address_ + ((etiss_int16)(((etiss_int16)imm) << (3)) >> (3))) + "LL;\n";
+cp.code() += "}\n";
+}
+}
+cp.code() += "}\n";
+}
+cp.code() += "}\n";
+cp.code() += "}\n";
+}
 cp.code() += "instr_exit_" + std::to_string(ic.current_address_) + ":\n";
 cp.code() += "cpu->instructionPointer = cpu->nextPc;\n";
 // -----------------------------------------------------------------------------
-		cp.getRegisterDependencies().add(reg_name[rs1 % 32U], 32);
+		cp.getRegisterDependencies().add(reg_name[rs1 % 32ULL], 32);
 		cp.getAffectedRegisters().add("instructionPointer", 32);
 	}
 	{
@@ -170,7 +244,7 @@ cp.code() += "cpu->instructionPointer = cpu->nextPc;\n";
 		cp.code() = std::string("//CV_BNEIMM\n");
 
 // -----------------------------------------------------------------------------
-cp.code() += "if (cpu->return_pending | cpu->exception | cpu->nextPc != " + std::to_string(ic.current_address_ + 4) + ") return cpu->exception;\n";
+cp.code() += "if (cpu->return_pending | cpu->exception | cpu->nextPc != " + std::to_string(ic.current_address_ + 4) + "ULL) return cpu->exception;\n";
 // -----------------------------------------------------------------------------
 	}
 

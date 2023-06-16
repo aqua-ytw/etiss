@@ -1,5 +1,5 @@
 /**
- * Generated on Mon, 29 May 2023 08:17:20 +0200.
+ * Generated on Fri, 16 Jun 2023 15:27:33 +0200.
  *
  * This file contains the instruction behavior models of the tum_ret
  * instruction set for the RV32IMACFDXCoreV core architecture.
@@ -37,22 +37,47 @@ static InstructionDefinition mret_ (
 		cp.code() = std::string("//MRET\n");
 
 // -----------------------------------------------------------------------------
-cp.code() += "cpu->nextPc = " + std::to_string(ic.current_address_ + 4U) + "U;\n";
-cp.code() += "if (((RV32IMACFDXCoreV*)cpu)->PRIV < 3) {\n";
-cp.code() += "cpu->exception = 0; raise(cpu, system, plugin_pointers, 0U, 2);\n";
+{
+cp.code() += "{\n";
+cp.code() += "cpu->nextPc = " + std::to_string(ic.current_address_ + 4ULL) + "ULL;\n";
+cp.code() += "}\n";
+}
+{
+cp.code() += "{\n";
+cp.code() += "if (" + std::to_string(ic.current_address_) + "ULL == ((RV32IMACFDXCoreV*)cpu)->lpend_0 && ((RV32IMACFDXCoreV*)cpu)->lpcount_0 != 0ULL) {\n";
+{
+cp.code() += "{\n";
+cp.code() += "cpu->nextPc = ((RV32IMACFDXCoreV*)cpu)->lpstart_0;\n";
+cp.code() += "((RV32IMACFDXCoreV*)cpu)->lpcount_0 = ((RV32IMACFDXCoreV*)cpu)->lpcount_0 - 1ULL;\n";
+cp.code() += "}\n";
+}
+cp.code() += "}\n";
+cp.code() += "}\n";
+}
+cp.code() += "cpu->nextPc = " + std::to_string(ic.current_address_ + 4ULL) + "ULL;\n";
+{
+cp.code() += "{\n";
+cp.code() += "if (((RV32IMACFDXCoreV*)cpu)->PRIV < 3LL) {\n";
+{
+cp.code() += "{\n";
+cp.code() += "raise(cpu, system, plugin_pointers, 0ULL, 2LL);\n";
 cp.code() += "goto instr_exit_" + std::to_string(ic.current_address_) + ";\n";
 cp.code() += "}\n";
-cp.code() += "cpu->nextPc = *((RV32IMACFDXCoreV*)cpu)->CSR[833];\n";
-cp.code() += "etiss_uint32 s = *((RV32IMACFDXCoreV*)cpu)->CSR[768];\n";
-cp.code() += "etiss_uint32 prev_prv = get_field(s, 6144);\n";
-cp.code() += "if (prev_prv != 3) {\n";
-cp.code() += "s = set_field(s, 131072, 0U);\n";
+}
 cp.code() += "}\n";
-cp.code() += "s = set_field(s, 8, get_field(s, 128));\n";
-cp.code() += "s = set_field(s, 128, 1U);\n";
-cp.code() += "s = set_field(s, 6144, (extension_enabled(cpu, system, plugin_pointers, 85U)) ? (0) : (3));\n";
-cp.code() += "*((RV32IMACFDXCoreV*)cpu)->CSR[768] = s;\n";
+cp.code() += "cpu->nextPc = *((RV32IMACFDXCoreV*)cpu)->CSR[833LL];\n";
+cp.code() += "etiss_uint32 s = *((RV32IMACFDXCoreV*)cpu)->CSR[768LL];\n";
+cp.code() += "etiss_uint32 prev_prv = get_field(s, 6144LL);\n";
+cp.code() += "if (prev_prv != 3LL) {\n";
+cp.code() += "s = set_field(s, 131072LL, 0ULL);\n";
+cp.code() += "}\n";
+cp.code() += "s = set_field(s, 8LL, get_field(s, 128LL));\n";
+cp.code() += "s = set_field(s, 128LL, 1ULL);\n";
+cp.code() += "s = set_field(s, 6144LL, (extension_enabled(cpu, system, plugin_pointers, 85ULL)) ? (0LL) : (3LL));\n";
+cp.code() += "*((RV32IMACFDXCoreV*)cpu)->CSR[768LL] = s;\n";
 cp.code() += "((RV32IMACFDXCoreV*)cpu)->PRIV = (prev_prv) & 0x7;\n";
+cp.code() += "}\n";
+}
 cp.code() += "instr_exit_" + std::to_string(ic.current_address_) + ":\n";
 cp.code() += "cpu->instructionPointer = cpu->nextPc;\n";
 // -----------------------------------------------------------------------------
@@ -108,19 +133,44 @@ static InstructionDefinition sret_ (
 		cp.code() = std::string("//SRET\n");
 
 // -----------------------------------------------------------------------------
-cp.code() += "cpu->nextPc = " + std::to_string(ic.current_address_ + 4U) + "U;\n";
-cp.code() += "if (((RV32IMACFDXCoreV*)cpu)->PRIV < ((get_field(*((RV32IMACFDXCoreV*)cpu)->CSR[768], 4194304)) ? (3) : (1))) {\n";
-cp.code() += "cpu->exception = 0; raise(cpu, system, plugin_pointers, 0U, 2);\n";
+{
+cp.code() += "{\n";
+cp.code() += "cpu->nextPc = " + std::to_string(ic.current_address_ + 4ULL) + "ULL;\n";
+cp.code() += "}\n";
+}
+{
+cp.code() += "{\n";
+cp.code() += "if (" + std::to_string(ic.current_address_) + "ULL == ((RV32IMACFDXCoreV*)cpu)->lpend_0 && ((RV32IMACFDXCoreV*)cpu)->lpcount_0 != 0ULL) {\n";
+{
+cp.code() += "{\n";
+cp.code() += "cpu->nextPc = ((RV32IMACFDXCoreV*)cpu)->lpstart_0;\n";
+cp.code() += "((RV32IMACFDXCoreV*)cpu)->lpcount_0 = ((RV32IMACFDXCoreV*)cpu)->lpcount_0 - 1ULL;\n";
+cp.code() += "}\n";
+}
+cp.code() += "}\n";
+cp.code() += "}\n";
+}
+cp.code() += "cpu->nextPc = " + std::to_string(ic.current_address_ + 4ULL) + "ULL;\n";
+{
+cp.code() += "{\n";
+cp.code() += "if (((RV32IMACFDXCoreV*)cpu)->PRIV < ((get_field(*((RV32IMACFDXCoreV*)cpu)->CSR[768LL], 4194304LL)) ? (3LL) : (1LL))) {\n";
+{
+cp.code() += "{\n";
+cp.code() += "raise(cpu, system, plugin_pointers, 0ULL, 2LL);\n";
 cp.code() += "goto instr_exit_" + std::to_string(ic.current_address_) + ";\n";
 cp.code() += "}\n";
-cp.code() += "cpu->nextPc = *((RV32IMACFDXCoreV*)cpu)->CSR[321];\n";
-cp.code() += "etiss_uint32 s = *((RV32IMACFDXCoreV*)cpu)->CSR[256];\n";
-cp.code() += "etiss_uint32 prev_prv = get_field(s, 256);\n";
-cp.code() += "s = set_field(s, 2, get_field(s, 32));\n";
-cp.code() += "s = set_field(s, 32, 1U);\n";
-cp.code() += "s = set_field(s, 256, 0);\n";
-cp.code() += "*((RV32IMACFDXCoreV*)cpu)->CSR[768] = s;\n";
+}
+cp.code() += "}\n";
+cp.code() += "cpu->nextPc = *((RV32IMACFDXCoreV*)cpu)->CSR[321LL];\n";
+cp.code() += "etiss_uint32 s = *((RV32IMACFDXCoreV*)cpu)->CSR[256LL];\n";
+cp.code() += "etiss_uint32 prev_prv = get_field(s, 256LL);\n";
+cp.code() += "s = set_field(s, 2LL, get_field(s, 32LL));\n";
+cp.code() += "s = set_field(s, 32LL, 1ULL);\n";
+cp.code() += "s = set_field(s, 256LL, 0LL);\n";
+cp.code() += "*((RV32IMACFDXCoreV*)cpu)->CSR[768LL] = s;\n";
 cp.code() += "((RV32IMACFDXCoreV*)cpu)->PRIV = (prev_prv) & 0x7;\n";
+cp.code() += "}\n";
+}
 cp.code() += "instr_exit_" + std::to_string(ic.current_address_) + ":\n";
 cp.code() += "cpu->instructionPointer = cpu->nextPc;\n";
 // -----------------------------------------------------------------------------

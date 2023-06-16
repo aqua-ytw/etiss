@@ -1,5 +1,5 @@
 /**
- * Generated on Mon, 29 May 2023 08:17:20 +0200.
+ * Generated on Fri, 16 Jun 2023 15:27:33 +0200.
  *
  * This file contains the instruction behavior models of the XCoreVMac
  * instruction set for the RV32IMACFDXCoreV core architecture.
@@ -46,10 +46,31 @@ rs2 += R_rs2_0.read(ba) << 0;
 		cp.code() = std::string("//CV_MAC\n");
 
 // -----------------------------------------------------------------------------
-cp.code() += "cpu->nextPc = " + std::to_string(ic.current_address_ + 4U) + "U;\n";
-cp.code() += "etiss_int64 result = (etiss_int32)(*((RV32IMACFDXCoreV*)cpu)->X[" + std::to_string(rs1) + "U]) * (etiss_int32)(*((RV32IMACFDXCoreV*)cpu)->X[" + std::to_string(rs2) + "U]) + (etiss_int32)(*((RV32IMACFDXCoreV*)cpu)->X[" + std::to_string(rd) + "U]);\n";
-if (rd != 0U) {
-cp.code() += "*((RV32IMACFDXCoreV*)cpu)->X[" + std::to_string(rd) + "U] = (((result) >> (0U)) & 4294967295);\n";
+{
+cp.code() += "{\n";
+cp.code() += "cpu->nextPc = " + std::to_string(ic.current_address_ + 4ULL) + "ULL;\n";
+cp.code() += "}\n";
+}
+{
+cp.code() += "{\n";
+cp.code() += "if (" + std::to_string(ic.current_address_) + "ULL == ((RV32IMACFDXCoreV*)cpu)->lpend_0 && ((RV32IMACFDXCoreV*)cpu)->lpcount_0 != 0ULL) {\n";
+{
+cp.code() += "{\n";
+cp.code() += "cpu->nextPc = ((RV32IMACFDXCoreV*)cpu)->lpstart_0;\n";
+cp.code() += "((RV32IMACFDXCoreV*)cpu)->lpcount_0 = ((RV32IMACFDXCoreV*)cpu)->lpcount_0 - 1ULL;\n";
+cp.code() += "}\n";
+}
+cp.code() += "}\n";
+cp.code() += "}\n";
+}
+cp.code() += "cpu->nextPc = " + std::to_string(ic.current_address_ + 4ULL) + "ULL;\n";
+{
+cp.code() += "{\n";
+cp.code() += "etiss_int64 result = (etiss_int32)(*((RV32IMACFDXCoreV*)cpu)->X[" + std::to_string(rs1) + "ULL]) * (etiss_int32)(*((RV32IMACFDXCoreV*)cpu)->X[" + std::to_string(rs2) + "ULL]) + (etiss_int32)(*((RV32IMACFDXCoreV*)cpu)->X[" + std::to_string(rd) + "ULL]);\n";
+if (rd != 0ULL) {
+cp.code() += "*((RV32IMACFDXCoreV*)cpu)->X[" + std::to_string(rd) + "ULL] = (((result) >> (0ULL)) & 4294967295);\n";
+}
+cp.code() += "}\n";
 }
 cp.code() += "instr_exit_" + std::to_string(ic.current_address_) + ":\n";
 cp.code() += "cpu->instructionPointer = cpu->nextPc;\n";
@@ -119,10 +140,31 @@ rs2 += R_rs2_0.read(ba) << 0;
 		cp.code() = std::string("//CV_MSU\n");
 
 // -----------------------------------------------------------------------------
-cp.code() += "cpu->nextPc = " + std::to_string(ic.current_address_ + 4U) + "U;\n";
-cp.code() += "etiss_int64 result = (etiss_int32)(*((RV32IMACFDXCoreV*)cpu)->X[" + std::to_string(rd) + "U]) - (etiss_int32)(*((RV32IMACFDXCoreV*)cpu)->X[" + std::to_string(rs1) + "U]) * (etiss_int32)(*((RV32IMACFDXCoreV*)cpu)->X[" + std::to_string(rs2) + "U]);\n";
-if (rd != 0U) {
-cp.code() += "*((RV32IMACFDXCoreV*)cpu)->X[" + std::to_string(rd) + "U] = (((result) >> (0U)) & 4294967295);\n";
+{
+cp.code() += "{\n";
+cp.code() += "cpu->nextPc = " + std::to_string(ic.current_address_ + 4ULL) + "ULL;\n";
+cp.code() += "}\n";
+}
+{
+cp.code() += "{\n";
+cp.code() += "if (" + std::to_string(ic.current_address_) + "ULL == ((RV32IMACFDXCoreV*)cpu)->lpend_0 && ((RV32IMACFDXCoreV*)cpu)->lpcount_0 != 0ULL) {\n";
+{
+cp.code() += "{\n";
+cp.code() += "cpu->nextPc = ((RV32IMACFDXCoreV*)cpu)->lpstart_0;\n";
+cp.code() += "((RV32IMACFDXCoreV*)cpu)->lpcount_0 = ((RV32IMACFDXCoreV*)cpu)->lpcount_0 - 1ULL;\n";
+cp.code() += "}\n";
+}
+cp.code() += "}\n";
+cp.code() += "}\n";
+}
+cp.code() += "cpu->nextPc = " + std::to_string(ic.current_address_ + 4ULL) + "ULL;\n";
+{
+cp.code() += "{\n";
+cp.code() += "etiss_int64 result = (etiss_int32)(*((RV32IMACFDXCoreV*)cpu)->X[" + std::to_string(rd) + "ULL]) - (etiss_int32)(*((RV32IMACFDXCoreV*)cpu)->X[" + std::to_string(rs1) + "ULL]) * (etiss_int32)(*((RV32IMACFDXCoreV*)cpu)->X[" + std::to_string(rs2) + "ULL]);\n";
+if (rd != 0ULL) {
+cp.code() += "*((RV32IMACFDXCoreV*)cpu)->X[" + std::to_string(rd) + "ULL] = (((result) >> (0ULL)) & 4294967295);\n";
+}
+cp.code() += "}\n";
 }
 cp.code() += "instr_exit_" + std::to_string(ic.current_address_) + ":\n";
 cp.code() += "cpu->instructionPointer = cpu->nextPc;\n";
@@ -195,10 +237,31 @@ Is3 += R_Is3_0.read(ba) << 0;
 		cp.code() = std::string("//CV_MULUN\n");
 
 // -----------------------------------------------------------------------------
-cp.code() += "cpu->nextPc = " + std::to_string(ic.current_address_ + 4U) + "U;\n";
-cp.code() += "etiss_uint32 result = ((etiss_uint16)((((*((RV32IMACFDXCoreV*)cpu)->X[" + std::to_string(rs1) + "U]) >> (0U)) & 65535)) * (etiss_uint16)((((*((RV32IMACFDXCoreV*)cpu)->X[" + std::to_string(rs2) + "U]) >> (0U)) & 65535))) >> " + std::to_string(Is3) + "U;\n";
-if (rd != 0U) {
-cp.code() += "*((RV32IMACFDXCoreV*)cpu)->X[" + std::to_string(rd) + "U] = (((result) >> (0U)) & 4294967295);\n";
+{
+cp.code() += "{\n";
+cp.code() += "cpu->nextPc = " + std::to_string(ic.current_address_ + 4ULL) + "ULL;\n";
+cp.code() += "}\n";
+}
+{
+cp.code() += "{\n";
+cp.code() += "if (" + std::to_string(ic.current_address_) + "ULL == ((RV32IMACFDXCoreV*)cpu)->lpend_0 && ((RV32IMACFDXCoreV*)cpu)->lpcount_0 != 0ULL) {\n";
+{
+cp.code() += "{\n";
+cp.code() += "cpu->nextPc = ((RV32IMACFDXCoreV*)cpu)->lpstart_0;\n";
+cp.code() += "((RV32IMACFDXCoreV*)cpu)->lpcount_0 = ((RV32IMACFDXCoreV*)cpu)->lpcount_0 - 1ULL;\n";
+cp.code() += "}\n";
+}
+cp.code() += "}\n";
+cp.code() += "}\n";
+}
+cp.code() += "cpu->nextPc = " + std::to_string(ic.current_address_ + 4ULL) + "ULL;\n";
+{
+cp.code() += "{\n";
+cp.code() += "etiss_uint32 result = ((etiss_uint16)((((*((RV32IMACFDXCoreV*)cpu)->X[" + std::to_string(rs1) + "ULL]) >> (0ULL)) & 65535)) * (etiss_uint16)((((*((RV32IMACFDXCoreV*)cpu)->X[" + std::to_string(rs2) + "ULL]) >> (0ULL)) & 65535))) >> " + std::to_string(Is3) + "ULL;\n";
+if (rd != 0ULL) {
+cp.code() += "*((RV32IMACFDXCoreV*)cpu)->X[" + std::to_string(rd) + "ULL] = (((result) >> (0ULL)) & 4294967295);\n";
+}
+cp.code() += "}\n";
 }
 cp.code() += "instr_exit_" + std::to_string(ic.current_address_) + ":\n";
 cp.code() += "cpu->instructionPointer = cpu->nextPc;\n";
@@ -273,10 +336,31 @@ Is3 += R_Is3_0.read(ba) << 0;
 		cp.code() = std::string("//CV_MULHHUN\n");
 
 // -----------------------------------------------------------------------------
-cp.code() += "cpu->nextPc = " + std::to_string(ic.current_address_ + 4U) + "U;\n";
-cp.code() += "etiss_uint32 result = ((etiss_uint16)((((*((RV32IMACFDXCoreV*)cpu)->X[" + std::to_string(rs1) + "U]) >> (16U)) & 65535)) * (etiss_uint16)((((*((RV32IMACFDXCoreV*)cpu)->X[" + std::to_string(rs2) + "U]) >> (16U)) & 65535))) >> " + std::to_string(Is3) + "U;\n";
-if (rd != 0U) {
-cp.code() += "*((RV32IMACFDXCoreV*)cpu)->X[" + std::to_string(rd) + "U] = (((result) >> (0U)) & 4294967295);\n";
+{
+cp.code() += "{\n";
+cp.code() += "cpu->nextPc = " + std::to_string(ic.current_address_ + 4ULL) + "ULL;\n";
+cp.code() += "}\n";
+}
+{
+cp.code() += "{\n";
+cp.code() += "if (" + std::to_string(ic.current_address_) + "ULL == ((RV32IMACFDXCoreV*)cpu)->lpend_0 && ((RV32IMACFDXCoreV*)cpu)->lpcount_0 != 0ULL) {\n";
+{
+cp.code() += "{\n";
+cp.code() += "cpu->nextPc = ((RV32IMACFDXCoreV*)cpu)->lpstart_0;\n";
+cp.code() += "((RV32IMACFDXCoreV*)cpu)->lpcount_0 = ((RV32IMACFDXCoreV*)cpu)->lpcount_0 - 1ULL;\n";
+cp.code() += "}\n";
+}
+cp.code() += "}\n";
+cp.code() += "}\n";
+}
+cp.code() += "cpu->nextPc = " + std::to_string(ic.current_address_ + 4ULL) + "ULL;\n";
+{
+cp.code() += "{\n";
+cp.code() += "etiss_uint32 result = ((etiss_uint16)((((*((RV32IMACFDXCoreV*)cpu)->X[" + std::to_string(rs1) + "ULL]) >> (16ULL)) & 65535)) * (etiss_uint16)((((*((RV32IMACFDXCoreV*)cpu)->X[" + std::to_string(rs2) + "ULL]) >> (16ULL)) & 65535))) >> " + std::to_string(Is3) + "ULL;\n";
+if (rd != 0ULL) {
+cp.code() += "*((RV32IMACFDXCoreV*)cpu)->X[" + std::to_string(rd) + "ULL] = (((result) >> (0ULL)) & 4294967295);\n";
+}
+cp.code() += "}\n";
 }
 cp.code() += "instr_exit_" + std::to_string(ic.current_address_) + ":\n";
 cp.code() += "cpu->instructionPointer = cpu->nextPc;\n";
@@ -351,10 +435,31 @@ Is3 += R_Is3_0.read(ba) << 0;
 		cp.code() = std::string("//CV_MULSN\n");
 
 // -----------------------------------------------------------------------------
-cp.code() += "cpu->nextPc = " + std::to_string(ic.current_address_ + 4U) + "U;\n";
-cp.code() += "etiss_int32 result = ((etiss_int16)((((*((RV32IMACFDXCoreV*)cpu)->X[" + std::to_string(rs1) + "U]) >> (0U)) & 65535)) * (etiss_int16)((((*((RV32IMACFDXCoreV*)cpu)->X[" + std::to_string(rs2) + "U]) >> (0U)) & 65535))) >> " + std::to_string(Is3) + "U;\n";
-if (rd != 0U) {
-cp.code() += "*((RV32IMACFDXCoreV*)cpu)->X[" + std::to_string(rd) + "U] = (((result) >> (0U)) & 4294967295);\n";
+{
+cp.code() += "{\n";
+cp.code() += "cpu->nextPc = " + std::to_string(ic.current_address_ + 4ULL) + "ULL;\n";
+cp.code() += "}\n";
+}
+{
+cp.code() += "{\n";
+cp.code() += "if (" + std::to_string(ic.current_address_) + "ULL == ((RV32IMACFDXCoreV*)cpu)->lpend_0 && ((RV32IMACFDXCoreV*)cpu)->lpcount_0 != 0ULL) {\n";
+{
+cp.code() += "{\n";
+cp.code() += "cpu->nextPc = ((RV32IMACFDXCoreV*)cpu)->lpstart_0;\n";
+cp.code() += "((RV32IMACFDXCoreV*)cpu)->lpcount_0 = ((RV32IMACFDXCoreV*)cpu)->lpcount_0 - 1ULL;\n";
+cp.code() += "}\n";
+}
+cp.code() += "}\n";
+cp.code() += "}\n";
+}
+cp.code() += "cpu->nextPc = " + std::to_string(ic.current_address_ + 4ULL) + "ULL;\n";
+{
+cp.code() += "{\n";
+cp.code() += "etiss_int32 result = ((etiss_int16)((((*((RV32IMACFDXCoreV*)cpu)->X[" + std::to_string(rs1) + "ULL]) >> (0ULL)) & 65535)) * (etiss_int16)((((*((RV32IMACFDXCoreV*)cpu)->X[" + std::to_string(rs2) + "ULL]) >> (0ULL)) & 65535))) >> " + std::to_string(Is3) + "ULL;\n";
+if (rd != 0ULL) {
+cp.code() += "*((RV32IMACFDXCoreV*)cpu)->X[" + std::to_string(rd) + "ULL] = (((result) >> (0ULL)) & 4294967295);\n";
+}
+cp.code() += "}\n";
 }
 cp.code() += "instr_exit_" + std::to_string(ic.current_address_) + ":\n";
 cp.code() += "cpu->instructionPointer = cpu->nextPc;\n";
@@ -429,10 +534,31 @@ Is3 += R_Is3_0.read(ba) << 0;
 		cp.code() = std::string("//CV_MULHHSN\n");
 
 // -----------------------------------------------------------------------------
-cp.code() += "cpu->nextPc = " + std::to_string(ic.current_address_ + 4U) + "U;\n";
-cp.code() += "etiss_int32 result = ((etiss_int16)((((*((RV32IMACFDXCoreV*)cpu)->X[" + std::to_string(rs1) + "U]) >> (16U)) & 65535)) * (etiss_int16)((((*((RV32IMACFDXCoreV*)cpu)->X[" + std::to_string(rs2) + "U]) >> (16U)) & 65535))) >> " + std::to_string(Is3) + "U;\n";
-if (rd != 0U) {
-cp.code() += "*((RV32IMACFDXCoreV*)cpu)->X[" + std::to_string(rd) + "U] = (((result) >> (0U)) & 4294967295);\n";
+{
+cp.code() += "{\n";
+cp.code() += "cpu->nextPc = " + std::to_string(ic.current_address_ + 4ULL) + "ULL;\n";
+cp.code() += "}\n";
+}
+{
+cp.code() += "{\n";
+cp.code() += "if (" + std::to_string(ic.current_address_) + "ULL == ((RV32IMACFDXCoreV*)cpu)->lpend_0 && ((RV32IMACFDXCoreV*)cpu)->lpcount_0 != 0ULL) {\n";
+{
+cp.code() += "{\n";
+cp.code() += "cpu->nextPc = ((RV32IMACFDXCoreV*)cpu)->lpstart_0;\n";
+cp.code() += "((RV32IMACFDXCoreV*)cpu)->lpcount_0 = ((RV32IMACFDXCoreV*)cpu)->lpcount_0 - 1ULL;\n";
+cp.code() += "}\n";
+}
+cp.code() += "}\n";
+cp.code() += "}\n";
+}
+cp.code() += "cpu->nextPc = " + std::to_string(ic.current_address_ + 4ULL) + "ULL;\n";
+{
+cp.code() += "{\n";
+cp.code() += "etiss_int32 result = ((etiss_int16)((((*((RV32IMACFDXCoreV*)cpu)->X[" + std::to_string(rs1) + "ULL]) >> (16ULL)) & 65535)) * (etiss_int16)((((*((RV32IMACFDXCoreV*)cpu)->X[" + std::to_string(rs2) + "ULL]) >> (16ULL)) & 65535))) >> " + std::to_string(Is3) + "ULL;\n";
+if (rd != 0ULL) {
+cp.code() += "*((RV32IMACFDXCoreV*)cpu)->X[" + std::to_string(rd) + "ULL] = (((result) >> (0ULL)) & 4294967295);\n";
+}
+cp.code() += "}\n";
 }
 cp.code() += "instr_exit_" + std::to_string(ic.current_address_) + ":\n";
 cp.code() += "cpu->instructionPointer = cpu->nextPc;\n";
@@ -507,12 +633,33 @@ Is3 += R_Is3_0.read(ba) << 0;
 		cp.code() = std::string("//CV_MULURN\n");
 
 // -----------------------------------------------------------------------------
-cp.code() += "cpu->nextPc = " + std::to_string(ic.current_address_ + 4U) + "U;\n";
-cp.code() += "etiss_int32 product = ((etiss_uint16)((((*((RV32IMACFDXCoreV*)cpu)->X[" + std::to_string(rs1) + "U]) >> (0U)) & 65535)) * (etiss_uint16)((((*((RV32IMACFDXCoreV*)cpu)->X[" + std::to_string(rs2) + "U]) >> (0U)) & 65535))) & 0x7fffffff;\n";
-etiss_uint32 powerOf2 = (1U << (Is3 - 1U)) & 0x3fffffff;
-cp.code() += "etiss_uint32 sum = product + " + std::to_string(powerOf2) + "U;\n";
-cp.code() += "etiss_uint32 rounded = sum >> " + std::to_string(Is3) + "U;\n";
-cp.code() += "*((RV32IMACFDXCoreV*)cpu)->X[" + std::to_string(rd) + "U] = (((rounded) >> (0U)) & 4294967295);\n";
+{
+cp.code() += "{\n";
+cp.code() += "cpu->nextPc = " + std::to_string(ic.current_address_ + 4ULL) + "ULL;\n";
+cp.code() += "}\n";
+}
+{
+cp.code() += "{\n";
+cp.code() += "if (" + std::to_string(ic.current_address_) + "ULL == ((RV32IMACFDXCoreV*)cpu)->lpend_0 && ((RV32IMACFDXCoreV*)cpu)->lpcount_0 != 0ULL) {\n";
+{
+cp.code() += "{\n";
+cp.code() += "cpu->nextPc = ((RV32IMACFDXCoreV*)cpu)->lpstart_0;\n";
+cp.code() += "((RV32IMACFDXCoreV*)cpu)->lpcount_0 = ((RV32IMACFDXCoreV*)cpu)->lpcount_0 - 1ULL;\n";
+cp.code() += "}\n";
+}
+cp.code() += "}\n";
+cp.code() += "}\n";
+}
+cp.code() += "cpu->nextPc = " + std::to_string(ic.current_address_ + 4ULL) + "ULL;\n";
+{
+cp.code() += "{\n";
+cp.code() += "etiss_int32 product = ((etiss_uint16)((((*((RV32IMACFDXCoreV*)cpu)->X[" + std::to_string(rs1) + "ULL]) >> (0ULL)) & 65535)) * (etiss_uint16)((((*((RV32IMACFDXCoreV*)cpu)->X[" + std::to_string(rs2) + "ULL]) >> (0ULL)) & 65535))) & 0x7fffffff;\n";
+etiss_uint32 powerOf2 = (1ULL << (Is3 - 1ULL)) & 0x3fffffff;
+cp.code() += "etiss_uint32 sum = product + " + std::to_string(powerOf2) + "ULL;\n";
+cp.code() += "etiss_uint32 rounded = sum >> " + std::to_string(Is3) + "ULL;\n";
+cp.code() += "*((RV32IMACFDXCoreV*)cpu)->X[" + std::to_string(rd) + "ULL] = (((rounded) >> (0ULL)) & 4294967295);\n";
+cp.code() += "}\n";
+}
 cp.code() += "instr_exit_" + std::to_string(ic.current_address_) + ":\n";
 cp.code() += "cpu->instructionPointer = cpu->nextPc;\n";
 // -----------------------------------------------------------------------------
@@ -586,12 +733,33 @@ Is3 += R_Is3_0.read(ba) << 0;
 		cp.code() = std::string("//CV_MULHHURN\n");
 
 // -----------------------------------------------------------------------------
-cp.code() += "cpu->nextPc = " + std::to_string(ic.current_address_ + 4U) + "U;\n";
-cp.code() += "etiss_int32 product = ((etiss_uint16)((((*((RV32IMACFDXCoreV*)cpu)->X[" + std::to_string(rs1) + "U]) >> (16U)) & 65535)) * (etiss_uint16)((((*((RV32IMACFDXCoreV*)cpu)->X[" + std::to_string(rs2) + "U]) >> (16U)) & 65535))) & 0x7fffffff;\n";
-etiss_uint32 powerOf2 = (1U << (Is3 - 1U)) & 0x3fffffff;
-cp.code() += "etiss_uint32 sum = product + " + std::to_string(powerOf2) + "U;\n";
-cp.code() += "etiss_uint32 rounded = sum >> " + std::to_string(Is3) + "U;\n";
-cp.code() += "*((RV32IMACFDXCoreV*)cpu)->X[" + std::to_string(rd) + "U] = (((rounded) >> (0U)) & 4294967295);\n";
+{
+cp.code() += "{\n";
+cp.code() += "cpu->nextPc = " + std::to_string(ic.current_address_ + 4ULL) + "ULL;\n";
+cp.code() += "}\n";
+}
+{
+cp.code() += "{\n";
+cp.code() += "if (" + std::to_string(ic.current_address_) + "ULL == ((RV32IMACFDXCoreV*)cpu)->lpend_0 && ((RV32IMACFDXCoreV*)cpu)->lpcount_0 != 0ULL) {\n";
+{
+cp.code() += "{\n";
+cp.code() += "cpu->nextPc = ((RV32IMACFDXCoreV*)cpu)->lpstart_0;\n";
+cp.code() += "((RV32IMACFDXCoreV*)cpu)->lpcount_0 = ((RV32IMACFDXCoreV*)cpu)->lpcount_0 - 1ULL;\n";
+cp.code() += "}\n";
+}
+cp.code() += "}\n";
+cp.code() += "}\n";
+}
+cp.code() += "cpu->nextPc = " + std::to_string(ic.current_address_ + 4ULL) + "ULL;\n";
+{
+cp.code() += "{\n";
+cp.code() += "etiss_int32 product = ((etiss_uint16)((((*((RV32IMACFDXCoreV*)cpu)->X[" + std::to_string(rs1) + "ULL]) >> (16ULL)) & 65535)) * (etiss_uint16)((((*((RV32IMACFDXCoreV*)cpu)->X[" + std::to_string(rs2) + "ULL]) >> (16ULL)) & 65535))) & 0x7fffffff;\n";
+etiss_uint32 powerOf2 = (1ULL << (Is3 - 1ULL)) & 0x3fffffff;
+cp.code() += "etiss_uint32 sum = product + " + std::to_string(powerOf2) + "ULL;\n";
+cp.code() += "etiss_uint32 rounded = sum >> " + std::to_string(Is3) + "ULL;\n";
+cp.code() += "*((RV32IMACFDXCoreV*)cpu)->X[" + std::to_string(rd) + "ULL] = (((rounded) >> (0ULL)) & 4294967295);\n";
+cp.code() += "}\n";
+}
 cp.code() += "instr_exit_" + std::to_string(ic.current_address_) + ":\n";
 cp.code() += "cpu->instructionPointer = cpu->nextPc;\n";
 // -----------------------------------------------------------------------------
@@ -665,12 +833,33 @@ Is3 += R_Is3_0.read(ba) << 0;
 		cp.code() = std::string("//CV_MULSRN\n");
 
 // -----------------------------------------------------------------------------
-cp.code() += "cpu->nextPc = " + std::to_string(ic.current_address_ + 4U) + "U;\n";
-cp.code() += "etiss_int32 product = ((etiss_int16)((((*((RV32IMACFDXCoreV*)cpu)->X[" + std::to_string(rs1) + "U]) >> (0U)) & 65535)) * (etiss_int16)((((*((RV32IMACFDXCoreV*)cpu)->X[" + std::to_string(rs2) + "U]) >> (0U)) & 65535))) & 0x7fffffff;\n";
-etiss_uint32 powerOf2 = (1U << (Is3 - 1U)) & 0x3fffffff;
-cp.code() += "etiss_int32 sum = product + " + std::to_string(powerOf2) + "U;\n";
-cp.code() += "etiss_int32 rounded = sum >> " + std::to_string(Is3) + "U;\n";
-cp.code() += "*((RV32IMACFDXCoreV*)cpu)->X[" + std::to_string(rd) + "U] = (((rounded) >> (0U)) & 4294967295);\n";
+{
+cp.code() += "{\n";
+cp.code() += "cpu->nextPc = " + std::to_string(ic.current_address_ + 4ULL) + "ULL;\n";
+cp.code() += "}\n";
+}
+{
+cp.code() += "{\n";
+cp.code() += "if (" + std::to_string(ic.current_address_) + "ULL == ((RV32IMACFDXCoreV*)cpu)->lpend_0 && ((RV32IMACFDXCoreV*)cpu)->lpcount_0 != 0ULL) {\n";
+{
+cp.code() += "{\n";
+cp.code() += "cpu->nextPc = ((RV32IMACFDXCoreV*)cpu)->lpstart_0;\n";
+cp.code() += "((RV32IMACFDXCoreV*)cpu)->lpcount_0 = ((RV32IMACFDXCoreV*)cpu)->lpcount_0 - 1ULL;\n";
+cp.code() += "}\n";
+}
+cp.code() += "}\n";
+cp.code() += "}\n";
+}
+cp.code() += "cpu->nextPc = " + std::to_string(ic.current_address_ + 4ULL) + "ULL;\n";
+{
+cp.code() += "{\n";
+cp.code() += "etiss_int32 product = ((etiss_int16)((((*((RV32IMACFDXCoreV*)cpu)->X[" + std::to_string(rs1) + "ULL]) >> (0ULL)) & 65535)) * (etiss_int16)((((*((RV32IMACFDXCoreV*)cpu)->X[" + std::to_string(rs2) + "ULL]) >> (0ULL)) & 65535))) & 0x7fffffff;\n";
+etiss_uint32 powerOf2 = (1ULL << (Is3 - 1ULL)) & 0x3fffffff;
+cp.code() += "etiss_int32 sum = product + " + std::to_string(powerOf2) + "ULL;\n";
+cp.code() += "etiss_int32 rounded = sum >> " + std::to_string(Is3) + "ULL;\n";
+cp.code() += "*((RV32IMACFDXCoreV*)cpu)->X[" + std::to_string(rd) + "ULL] = (((rounded) >> (0ULL)) & 4294967295);\n";
+cp.code() += "}\n";
+}
 cp.code() += "instr_exit_" + std::to_string(ic.current_address_) + ":\n";
 cp.code() += "cpu->instructionPointer = cpu->nextPc;\n";
 // -----------------------------------------------------------------------------
@@ -744,12 +933,33 @@ Is3 += R_Is3_0.read(ba) << 0;
 		cp.code() = std::string("//CV_MULHHSRN\n");
 
 // -----------------------------------------------------------------------------
-cp.code() += "cpu->nextPc = " + std::to_string(ic.current_address_ + 4U) + "U;\n";
-cp.code() += "etiss_int32 product = ((etiss_int16)((((*((RV32IMACFDXCoreV*)cpu)->X[" + std::to_string(rs1) + "U]) >> (16U)) & 65535)) * (etiss_int16)((((*((RV32IMACFDXCoreV*)cpu)->X[" + std::to_string(rs2) + "U]) >> (16U)) & 65535))) & 0x7fffffff;\n";
-etiss_uint32 powerOf2 = (1U << (Is3 - 1U)) & 0x3fffffff;
-cp.code() += "etiss_int32 sum = product + " + std::to_string(powerOf2) + "U;\n";
-cp.code() += "etiss_int32 rounded = sum >> " + std::to_string(Is3) + "U;\n";
-cp.code() += "*((RV32IMACFDXCoreV*)cpu)->X[" + std::to_string(rd) + "U] = (((rounded) >> (0U)) & 4294967295);\n";
+{
+cp.code() += "{\n";
+cp.code() += "cpu->nextPc = " + std::to_string(ic.current_address_ + 4ULL) + "ULL;\n";
+cp.code() += "}\n";
+}
+{
+cp.code() += "{\n";
+cp.code() += "if (" + std::to_string(ic.current_address_) + "ULL == ((RV32IMACFDXCoreV*)cpu)->lpend_0 && ((RV32IMACFDXCoreV*)cpu)->lpcount_0 != 0ULL) {\n";
+{
+cp.code() += "{\n";
+cp.code() += "cpu->nextPc = ((RV32IMACFDXCoreV*)cpu)->lpstart_0;\n";
+cp.code() += "((RV32IMACFDXCoreV*)cpu)->lpcount_0 = ((RV32IMACFDXCoreV*)cpu)->lpcount_0 - 1ULL;\n";
+cp.code() += "}\n";
+}
+cp.code() += "}\n";
+cp.code() += "}\n";
+}
+cp.code() += "cpu->nextPc = " + std::to_string(ic.current_address_ + 4ULL) + "ULL;\n";
+{
+cp.code() += "{\n";
+cp.code() += "etiss_int32 product = ((etiss_int16)((((*((RV32IMACFDXCoreV*)cpu)->X[" + std::to_string(rs1) + "ULL]) >> (16ULL)) & 65535)) * (etiss_int16)((((*((RV32IMACFDXCoreV*)cpu)->X[" + std::to_string(rs2) + "ULL]) >> (16ULL)) & 65535))) & 0x7fffffff;\n";
+etiss_uint32 powerOf2 = (1ULL << (Is3 - 1ULL)) & 0x3fffffff;
+cp.code() += "etiss_int32 sum = product + " + std::to_string(powerOf2) + "ULL;\n";
+cp.code() += "etiss_int32 rounded = sum >> " + std::to_string(Is3) + "ULL;\n";
+cp.code() += "*((RV32IMACFDXCoreV*)cpu)->X[" + std::to_string(rd) + "ULL] = (((rounded) >> (0ULL)) & 4294967295);\n";
+cp.code() += "}\n";
+}
 cp.code() += "instr_exit_" + std::to_string(ic.current_address_) + ":\n";
 cp.code() += "cpu->instructionPointer = cpu->nextPc;\n";
 // -----------------------------------------------------------------------------
@@ -823,10 +1033,31 @@ Is3 += R_Is3_0.read(ba) << 0;
 		cp.code() = std::string("//CV_MACUN\n");
 
 // -----------------------------------------------------------------------------
-cp.code() += "cpu->nextPc = " + std::to_string(ic.current_address_ + 4U) + "U;\n";
-cp.code() += "etiss_uint32 result = ((etiss_uint16)((((*((RV32IMACFDXCoreV*)cpu)->X[" + std::to_string(rs1) + "U]) >> (0U)) & 65535)) * (etiss_uint16)((((*((RV32IMACFDXCoreV*)cpu)->X[" + std::to_string(rs2) + "U]) >> (0U)) & 65535)) + (etiss_uint32)(*((RV32IMACFDXCoreV*)cpu)->X[" + std::to_string(rd) + "U])) >> " + std::to_string(Is3) + "U;\n";
-if (rd != 0U) {
-cp.code() += "*((RV32IMACFDXCoreV*)cpu)->X[" + std::to_string(rd) + "U] = (((result) >> (0U)) & 4294967295);\n";
+{
+cp.code() += "{\n";
+cp.code() += "cpu->nextPc = " + std::to_string(ic.current_address_ + 4ULL) + "ULL;\n";
+cp.code() += "}\n";
+}
+{
+cp.code() += "{\n";
+cp.code() += "if (" + std::to_string(ic.current_address_) + "ULL == ((RV32IMACFDXCoreV*)cpu)->lpend_0 && ((RV32IMACFDXCoreV*)cpu)->lpcount_0 != 0ULL) {\n";
+{
+cp.code() += "{\n";
+cp.code() += "cpu->nextPc = ((RV32IMACFDXCoreV*)cpu)->lpstart_0;\n";
+cp.code() += "((RV32IMACFDXCoreV*)cpu)->lpcount_0 = ((RV32IMACFDXCoreV*)cpu)->lpcount_0 - 1ULL;\n";
+cp.code() += "}\n";
+}
+cp.code() += "}\n";
+cp.code() += "}\n";
+}
+cp.code() += "cpu->nextPc = " + std::to_string(ic.current_address_ + 4ULL) + "ULL;\n";
+{
+cp.code() += "{\n";
+cp.code() += "etiss_uint32 result = ((etiss_uint16)((((*((RV32IMACFDXCoreV*)cpu)->X[" + std::to_string(rs1) + "ULL]) >> (0ULL)) & 65535)) * (etiss_uint16)((((*((RV32IMACFDXCoreV*)cpu)->X[" + std::to_string(rs2) + "ULL]) >> (0ULL)) & 65535)) + (etiss_uint32)(*((RV32IMACFDXCoreV*)cpu)->X[" + std::to_string(rd) + "ULL])) >> " + std::to_string(Is3) + "ULL;\n";
+if (rd != 0ULL) {
+cp.code() += "*((RV32IMACFDXCoreV*)cpu)->X[" + std::to_string(rd) + "ULL] = (((result) >> (0ULL)) & 4294967295);\n";
+}
+cp.code() += "}\n";
 }
 cp.code() += "instr_exit_" + std::to_string(ic.current_address_) + ":\n";
 cp.code() += "cpu->instructionPointer = cpu->nextPc;\n";
@@ -902,10 +1133,31 @@ Is3 += R_Is3_0.read(ba) << 0;
 		cp.code() = std::string("//CV_MACHHUN\n");
 
 // -----------------------------------------------------------------------------
-cp.code() += "cpu->nextPc = " + std::to_string(ic.current_address_ + 4U) + "U;\n";
-cp.code() += "etiss_uint32 result = ((etiss_uint16)((((*((RV32IMACFDXCoreV*)cpu)->X[" + std::to_string(rs1) + "U]) >> (16U)) & 65535)) * (etiss_uint16)((((*((RV32IMACFDXCoreV*)cpu)->X[" + std::to_string(rs2) + "U]) >> (16U)) & 65535)) + (etiss_uint32)(*((RV32IMACFDXCoreV*)cpu)->X[" + std::to_string(rd) + "U])) >> " + std::to_string(Is3) + "U;\n";
-if (rd != 0U) {
-cp.code() += "*((RV32IMACFDXCoreV*)cpu)->X[" + std::to_string(rd) + "U] = (((result) >> (0U)) & 4294967295);\n";
+{
+cp.code() += "{\n";
+cp.code() += "cpu->nextPc = " + std::to_string(ic.current_address_ + 4ULL) + "ULL;\n";
+cp.code() += "}\n";
+}
+{
+cp.code() += "{\n";
+cp.code() += "if (" + std::to_string(ic.current_address_) + "ULL == ((RV32IMACFDXCoreV*)cpu)->lpend_0 && ((RV32IMACFDXCoreV*)cpu)->lpcount_0 != 0ULL) {\n";
+{
+cp.code() += "{\n";
+cp.code() += "cpu->nextPc = ((RV32IMACFDXCoreV*)cpu)->lpstart_0;\n";
+cp.code() += "((RV32IMACFDXCoreV*)cpu)->lpcount_0 = ((RV32IMACFDXCoreV*)cpu)->lpcount_0 - 1ULL;\n";
+cp.code() += "}\n";
+}
+cp.code() += "}\n";
+cp.code() += "}\n";
+}
+cp.code() += "cpu->nextPc = " + std::to_string(ic.current_address_ + 4ULL) + "ULL;\n";
+{
+cp.code() += "{\n";
+cp.code() += "etiss_uint32 result = ((etiss_uint16)((((*((RV32IMACFDXCoreV*)cpu)->X[" + std::to_string(rs1) + "ULL]) >> (16ULL)) & 65535)) * (etiss_uint16)((((*((RV32IMACFDXCoreV*)cpu)->X[" + std::to_string(rs2) + "ULL]) >> (16ULL)) & 65535)) + (etiss_uint32)(*((RV32IMACFDXCoreV*)cpu)->X[" + std::to_string(rd) + "ULL])) >> " + std::to_string(Is3) + "ULL;\n";
+if (rd != 0ULL) {
+cp.code() += "*((RV32IMACFDXCoreV*)cpu)->X[" + std::to_string(rd) + "ULL] = (((result) >> (0ULL)) & 4294967295);\n";
+}
+cp.code() += "}\n";
 }
 cp.code() += "instr_exit_" + std::to_string(ic.current_address_) + ":\n";
 cp.code() += "cpu->instructionPointer = cpu->nextPc;\n";
@@ -981,10 +1233,31 @@ Is3 += R_Is3_0.read(ba) << 0;
 		cp.code() = std::string("//CV_MACSN\n");
 
 // -----------------------------------------------------------------------------
-cp.code() += "cpu->nextPc = " + std::to_string(ic.current_address_ + 4U) + "U;\n";
-cp.code() += "etiss_int32 result = ((etiss_int16)((((*((RV32IMACFDXCoreV*)cpu)->X[" + std::to_string(rs1) + "U]) >> (0U)) & 65535)) * (etiss_int16)((((*((RV32IMACFDXCoreV*)cpu)->X[" + std::to_string(rs2) + "U]) >> (0U)) & 65535)) + (etiss_int32)(*((RV32IMACFDXCoreV*)cpu)->X[" + std::to_string(rd) + "U])) >> " + std::to_string(Is3) + "U;\n";
-if (rd != 0U) {
-cp.code() += "*((RV32IMACFDXCoreV*)cpu)->X[" + std::to_string(rd) + "U] = (((result) >> (0U)) & 4294967295);\n";
+{
+cp.code() += "{\n";
+cp.code() += "cpu->nextPc = " + std::to_string(ic.current_address_ + 4ULL) + "ULL;\n";
+cp.code() += "}\n";
+}
+{
+cp.code() += "{\n";
+cp.code() += "if (" + std::to_string(ic.current_address_) + "ULL == ((RV32IMACFDXCoreV*)cpu)->lpend_0 && ((RV32IMACFDXCoreV*)cpu)->lpcount_0 != 0ULL) {\n";
+{
+cp.code() += "{\n";
+cp.code() += "cpu->nextPc = ((RV32IMACFDXCoreV*)cpu)->lpstart_0;\n";
+cp.code() += "((RV32IMACFDXCoreV*)cpu)->lpcount_0 = ((RV32IMACFDXCoreV*)cpu)->lpcount_0 - 1ULL;\n";
+cp.code() += "}\n";
+}
+cp.code() += "}\n";
+cp.code() += "}\n";
+}
+cp.code() += "cpu->nextPc = " + std::to_string(ic.current_address_ + 4ULL) + "ULL;\n";
+{
+cp.code() += "{\n";
+cp.code() += "etiss_int32 result = ((etiss_int16)((((*((RV32IMACFDXCoreV*)cpu)->X[" + std::to_string(rs1) + "ULL]) >> (0ULL)) & 65535)) * (etiss_int16)((((*((RV32IMACFDXCoreV*)cpu)->X[" + std::to_string(rs2) + "ULL]) >> (0ULL)) & 65535)) + (etiss_int32)(*((RV32IMACFDXCoreV*)cpu)->X[" + std::to_string(rd) + "ULL])) >> " + std::to_string(Is3) + "ULL;\n";
+if (rd != 0ULL) {
+cp.code() += "*((RV32IMACFDXCoreV*)cpu)->X[" + std::to_string(rd) + "ULL] = (((result) >> (0ULL)) & 4294967295);\n";
+}
+cp.code() += "}\n";
 }
 cp.code() += "instr_exit_" + std::to_string(ic.current_address_) + ":\n";
 cp.code() += "cpu->instructionPointer = cpu->nextPc;\n";
@@ -1060,10 +1333,31 @@ Is3 += R_Is3_0.read(ba) << 0;
 		cp.code() = std::string("//CV_MACHHSN\n");
 
 // -----------------------------------------------------------------------------
-cp.code() += "cpu->nextPc = " + std::to_string(ic.current_address_ + 4U) + "U;\n";
-cp.code() += "etiss_int32 result = ((etiss_int16)((((*((RV32IMACFDXCoreV*)cpu)->X[" + std::to_string(rs1) + "U]) >> (16U)) & 65535)) * (etiss_int16)((((*((RV32IMACFDXCoreV*)cpu)->X[" + std::to_string(rs2) + "U]) >> (16U)) & 65535)) + (etiss_int32)(*((RV32IMACFDXCoreV*)cpu)->X[" + std::to_string(rd) + "U])) >> " + std::to_string(Is3) + "U;\n";
-if (rd != 0U) {
-cp.code() += "*((RV32IMACFDXCoreV*)cpu)->X[" + std::to_string(rd) + "U] = (((result) >> (0U)) & 4294967295);\n";
+{
+cp.code() += "{\n";
+cp.code() += "cpu->nextPc = " + std::to_string(ic.current_address_ + 4ULL) + "ULL;\n";
+cp.code() += "}\n";
+}
+{
+cp.code() += "{\n";
+cp.code() += "if (" + std::to_string(ic.current_address_) + "ULL == ((RV32IMACFDXCoreV*)cpu)->lpend_0 && ((RV32IMACFDXCoreV*)cpu)->lpcount_0 != 0ULL) {\n";
+{
+cp.code() += "{\n";
+cp.code() += "cpu->nextPc = ((RV32IMACFDXCoreV*)cpu)->lpstart_0;\n";
+cp.code() += "((RV32IMACFDXCoreV*)cpu)->lpcount_0 = ((RV32IMACFDXCoreV*)cpu)->lpcount_0 - 1ULL;\n";
+cp.code() += "}\n";
+}
+cp.code() += "}\n";
+cp.code() += "}\n";
+}
+cp.code() += "cpu->nextPc = " + std::to_string(ic.current_address_ + 4ULL) + "ULL;\n";
+{
+cp.code() += "{\n";
+cp.code() += "etiss_int32 result = ((etiss_int16)((((*((RV32IMACFDXCoreV*)cpu)->X[" + std::to_string(rs1) + "ULL]) >> (16ULL)) & 65535)) * (etiss_int16)((((*((RV32IMACFDXCoreV*)cpu)->X[" + std::to_string(rs2) + "ULL]) >> (16ULL)) & 65535)) + (etiss_int32)(*((RV32IMACFDXCoreV*)cpu)->X[" + std::to_string(rd) + "ULL])) >> " + std::to_string(Is3) + "ULL;\n";
+if (rd != 0ULL) {
+cp.code() += "*((RV32IMACFDXCoreV*)cpu)->X[" + std::to_string(rd) + "ULL] = (((result) >> (0ULL)) & 4294967295);\n";
+}
+cp.code() += "}\n";
 }
 cp.code() += "instr_exit_" + std::to_string(ic.current_address_) + ":\n";
 cp.code() += "cpu->instructionPointer = cpu->nextPc;\n";
@@ -1139,12 +1433,33 @@ Is3 += R_Is3_0.read(ba) << 0;
 		cp.code() = std::string("//CV_MACURN\n");
 
 // -----------------------------------------------------------------------------
-cp.code() += "cpu->nextPc = " + std::to_string(ic.current_address_ + 4U) + "U;\n";
-cp.code() += "etiss_uint32 product = ((etiss_uint16)(((((*((RV32IMACFDXCoreV*)cpu)->X[" + std::to_string(rs1) + "U]) >> (0U)) & 65535))) * (etiss_uint16)(((((*((RV32IMACFDXCoreV*)cpu)->X[" + std::to_string(rs2) + "U]) >> (0U)) & 65535)))) & 0x3fffffff;\n";
-etiss_uint32 powerOf2 = (1U << (Is3 - 1U)) & 0x3fffffff;
-cp.code() += "etiss_uint64 sum = (product + (etiss_uint32)(*((RV32IMACFDXCoreV*)cpu)->X[" + std::to_string(rd) + "U]) + " + std::to_string(powerOf2) + "U) & 0x1ffffffff;\n";
-cp.code() += "etiss_uint64 rounded = (sum >> " + std::to_string(Is3) + "U) & 0x1ffffffff;\n";
-cp.code() += "*((RV32IMACFDXCoreV*)cpu)->X[" + std::to_string(rd) + "U] = (((rounded) >> (0U)) & 4294967295);\n";
+{
+cp.code() += "{\n";
+cp.code() += "cpu->nextPc = " + std::to_string(ic.current_address_ + 4ULL) + "ULL;\n";
+cp.code() += "}\n";
+}
+{
+cp.code() += "{\n";
+cp.code() += "if (" + std::to_string(ic.current_address_) + "ULL == ((RV32IMACFDXCoreV*)cpu)->lpend_0 && ((RV32IMACFDXCoreV*)cpu)->lpcount_0 != 0ULL) {\n";
+{
+cp.code() += "{\n";
+cp.code() += "cpu->nextPc = ((RV32IMACFDXCoreV*)cpu)->lpstart_0;\n";
+cp.code() += "((RV32IMACFDXCoreV*)cpu)->lpcount_0 = ((RV32IMACFDXCoreV*)cpu)->lpcount_0 - 1ULL;\n";
+cp.code() += "}\n";
+}
+cp.code() += "}\n";
+cp.code() += "}\n";
+}
+cp.code() += "cpu->nextPc = " + std::to_string(ic.current_address_ + 4ULL) + "ULL;\n";
+{
+cp.code() += "{\n";
+cp.code() += "etiss_uint32 product = ((etiss_uint16)(((((*((RV32IMACFDXCoreV*)cpu)->X[" + std::to_string(rs1) + "ULL]) >> (0ULL)) & 65535))) * (etiss_uint16)(((((*((RV32IMACFDXCoreV*)cpu)->X[" + std::to_string(rs2) + "ULL]) >> (0ULL)) & 65535)))) & 0x3fffffff;\n";
+etiss_uint32 powerOf2 = (1ULL << (Is3 - 1ULL)) & 0x3fffffff;
+cp.code() += "etiss_uint64 sum = (product + (etiss_uint32)(*((RV32IMACFDXCoreV*)cpu)->X[" + std::to_string(rd) + "ULL]) + " + std::to_string(powerOf2) + "ULL) & 0x1ffffffff;\n";
+cp.code() += "etiss_uint64 rounded = (sum >> " + std::to_string(Is3) + "ULL) & 0x1ffffffff;\n";
+cp.code() += "*((RV32IMACFDXCoreV*)cpu)->X[" + std::to_string(rd) + "ULL] = (((rounded) >> (0ULL)) & 4294967295);\n";
+cp.code() += "}\n";
+}
 cp.code() += "instr_exit_" + std::to_string(ic.current_address_) + ":\n";
 cp.code() += "cpu->instructionPointer = cpu->nextPc;\n";
 // -----------------------------------------------------------------------------
@@ -1219,12 +1534,33 @@ Is3 += R_Is3_0.read(ba) << 0;
 		cp.code() = std::string("//CV_MACHHURN\n");
 
 // -----------------------------------------------------------------------------
-cp.code() += "cpu->nextPc = " + std::to_string(ic.current_address_ + 4U) + "U;\n";
-cp.code() += "etiss_uint32 product = ((etiss_uint16)(((((*((RV32IMACFDXCoreV*)cpu)->X[" + std::to_string(rs1) + "U]) >> (16U)) & 65535))) * (etiss_uint16)(((((*((RV32IMACFDXCoreV*)cpu)->X[" + std::to_string(rs2) + "U]) >> (16U)) & 65535)))) & 0x3fffffff;\n";
-etiss_uint32 powerOf2 = (1U << (Is3 - 1U)) & 0x3fffffff;
-cp.code() += "etiss_uint64 sum = (product + (etiss_uint32)(*((RV32IMACFDXCoreV*)cpu)->X[" + std::to_string(rd) + "U]) + " + std::to_string(powerOf2) + "U) & 0x1ffffffff;\n";
-cp.code() += "etiss_uint64 rounded = (sum >> " + std::to_string(Is3) + "U) & 0x1ffffffff;\n";
-cp.code() += "*((RV32IMACFDXCoreV*)cpu)->X[" + std::to_string(rd) + "U] = (((rounded) >> (0U)) & 4294967295);\n";
+{
+cp.code() += "{\n";
+cp.code() += "cpu->nextPc = " + std::to_string(ic.current_address_ + 4ULL) + "ULL;\n";
+cp.code() += "}\n";
+}
+{
+cp.code() += "{\n";
+cp.code() += "if (" + std::to_string(ic.current_address_) + "ULL == ((RV32IMACFDXCoreV*)cpu)->lpend_0 && ((RV32IMACFDXCoreV*)cpu)->lpcount_0 != 0ULL) {\n";
+{
+cp.code() += "{\n";
+cp.code() += "cpu->nextPc = ((RV32IMACFDXCoreV*)cpu)->lpstart_0;\n";
+cp.code() += "((RV32IMACFDXCoreV*)cpu)->lpcount_0 = ((RV32IMACFDXCoreV*)cpu)->lpcount_0 - 1ULL;\n";
+cp.code() += "}\n";
+}
+cp.code() += "}\n";
+cp.code() += "}\n";
+}
+cp.code() += "cpu->nextPc = " + std::to_string(ic.current_address_ + 4ULL) + "ULL;\n";
+{
+cp.code() += "{\n";
+cp.code() += "etiss_uint32 product = ((etiss_uint16)(((((*((RV32IMACFDXCoreV*)cpu)->X[" + std::to_string(rs1) + "ULL]) >> (16ULL)) & 65535))) * (etiss_uint16)(((((*((RV32IMACFDXCoreV*)cpu)->X[" + std::to_string(rs2) + "ULL]) >> (16ULL)) & 65535)))) & 0x3fffffff;\n";
+etiss_uint32 powerOf2 = (1ULL << (Is3 - 1ULL)) & 0x3fffffff;
+cp.code() += "etiss_uint64 sum = (product + (etiss_uint32)(*((RV32IMACFDXCoreV*)cpu)->X[" + std::to_string(rd) + "ULL]) + " + std::to_string(powerOf2) + "ULL) & 0x1ffffffff;\n";
+cp.code() += "etiss_uint64 rounded = (sum >> " + std::to_string(Is3) + "ULL) & 0x1ffffffff;\n";
+cp.code() += "*((RV32IMACFDXCoreV*)cpu)->X[" + std::to_string(rd) + "ULL] = (((rounded) >> (0ULL)) & 4294967295);\n";
+cp.code() += "}\n";
+}
 cp.code() += "instr_exit_" + std::to_string(ic.current_address_) + ":\n";
 cp.code() += "cpu->instructionPointer = cpu->nextPc;\n";
 // -----------------------------------------------------------------------------
@@ -1299,12 +1635,33 @@ Is3 += R_Is3_0.read(ba) << 0;
 		cp.code() = std::string("//CV_MACSRN\n");
 
 // -----------------------------------------------------------------------------
-cp.code() += "cpu->nextPc = " + std::to_string(ic.current_address_ + 4U) + "U;\n";
-cp.code() += "etiss_int32 product = ((etiss_int16)((((*((RV32IMACFDXCoreV*)cpu)->X[" + std::to_string(rs1) + "U]) >> (0U)) & 65535)) * (etiss_int16)((((*((RV32IMACFDXCoreV*)cpu)->X[" + std::to_string(rs2) + "U]) >> (0U)) & 65535))) & 0x7fffffff;\n";
-etiss_uint32 powerOf2 = (1U << (Is3 - 1U)) & 0x3fffffff;
-cp.code() += "etiss_int32 sum = product + (etiss_int32)(*((RV32IMACFDXCoreV*)cpu)->X[" + std::to_string(rd) + "U]) + " + std::to_string(powerOf2) + "U;\n";
-cp.code() += "etiss_int32 rounded = sum >> " + std::to_string(Is3) + "U;\n";
-cp.code() += "*((RV32IMACFDXCoreV*)cpu)->X[" + std::to_string(rd) + "U] = (((rounded) >> (0U)) & 4294967295);\n";
+{
+cp.code() += "{\n";
+cp.code() += "cpu->nextPc = " + std::to_string(ic.current_address_ + 4ULL) + "ULL;\n";
+cp.code() += "}\n";
+}
+{
+cp.code() += "{\n";
+cp.code() += "if (" + std::to_string(ic.current_address_) + "ULL == ((RV32IMACFDXCoreV*)cpu)->lpend_0 && ((RV32IMACFDXCoreV*)cpu)->lpcount_0 != 0ULL) {\n";
+{
+cp.code() += "{\n";
+cp.code() += "cpu->nextPc = ((RV32IMACFDXCoreV*)cpu)->lpstart_0;\n";
+cp.code() += "((RV32IMACFDXCoreV*)cpu)->lpcount_0 = ((RV32IMACFDXCoreV*)cpu)->lpcount_0 - 1ULL;\n";
+cp.code() += "}\n";
+}
+cp.code() += "}\n";
+cp.code() += "}\n";
+}
+cp.code() += "cpu->nextPc = " + std::to_string(ic.current_address_ + 4ULL) + "ULL;\n";
+{
+cp.code() += "{\n";
+cp.code() += "etiss_int32 product = ((etiss_int16)((((*((RV32IMACFDXCoreV*)cpu)->X[" + std::to_string(rs1) + "ULL]) >> (0ULL)) & 65535)) * (etiss_int16)((((*((RV32IMACFDXCoreV*)cpu)->X[" + std::to_string(rs2) + "ULL]) >> (0ULL)) & 65535))) & 0x7fffffff;\n";
+etiss_uint32 powerOf2 = (1ULL << (Is3 - 1ULL)) & 0x3fffffff;
+cp.code() += "etiss_int32 sum = product + (etiss_int32)(*((RV32IMACFDXCoreV*)cpu)->X[" + std::to_string(rd) + "ULL]) + " + std::to_string(powerOf2) + "ULL;\n";
+cp.code() += "etiss_int32 rounded = sum >> " + std::to_string(Is3) + "ULL;\n";
+cp.code() += "*((RV32IMACFDXCoreV*)cpu)->X[" + std::to_string(rd) + "ULL] = (((rounded) >> (0ULL)) & 4294967295);\n";
+cp.code() += "}\n";
+}
 cp.code() += "instr_exit_" + std::to_string(ic.current_address_) + ":\n";
 cp.code() += "cpu->instructionPointer = cpu->nextPc;\n";
 // -----------------------------------------------------------------------------
@@ -1379,12 +1736,33 @@ Is3 += R_Is3_0.read(ba) << 0;
 		cp.code() = std::string("//CV_MACHHSRN\n");
 
 // -----------------------------------------------------------------------------
-cp.code() += "cpu->nextPc = " + std::to_string(ic.current_address_ + 4U) + "U;\n";
-cp.code() += "etiss_int32 product = ((etiss_int16)((((*((RV32IMACFDXCoreV*)cpu)->X[" + std::to_string(rs1) + "U]) >> (16U)) & 65535)) * (etiss_int16)((((*((RV32IMACFDXCoreV*)cpu)->X[" + std::to_string(rs2) + "U]) >> (16U)) & 65535))) & 0x7fffffff;\n";
-etiss_uint32 powerOf2 = (1U << (Is3 - 1U)) & 0x3fffffff;
-cp.code() += "etiss_int32 sum = product + (etiss_int32)(*((RV32IMACFDXCoreV*)cpu)->X[" + std::to_string(rd) + "U]) + " + std::to_string(powerOf2) + "U;\n";
-cp.code() += "etiss_int32 rounded = sum >> " + std::to_string(Is3) + "U;\n";
-cp.code() += "*((RV32IMACFDXCoreV*)cpu)->X[" + std::to_string(rd) + "U] = (((rounded) >> (0U)) & 4294967295);\n";
+{
+cp.code() += "{\n";
+cp.code() += "cpu->nextPc = " + std::to_string(ic.current_address_ + 4ULL) + "ULL;\n";
+cp.code() += "}\n";
+}
+{
+cp.code() += "{\n";
+cp.code() += "if (" + std::to_string(ic.current_address_) + "ULL == ((RV32IMACFDXCoreV*)cpu)->lpend_0 && ((RV32IMACFDXCoreV*)cpu)->lpcount_0 != 0ULL) {\n";
+{
+cp.code() += "{\n";
+cp.code() += "cpu->nextPc = ((RV32IMACFDXCoreV*)cpu)->lpstart_0;\n";
+cp.code() += "((RV32IMACFDXCoreV*)cpu)->lpcount_0 = ((RV32IMACFDXCoreV*)cpu)->lpcount_0 - 1ULL;\n";
+cp.code() += "}\n";
+}
+cp.code() += "}\n";
+cp.code() += "}\n";
+}
+cp.code() += "cpu->nextPc = " + std::to_string(ic.current_address_ + 4ULL) + "ULL;\n";
+{
+cp.code() += "{\n";
+cp.code() += "etiss_int32 product = ((etiss_int16)((((*((RV32IMACFDXCoreV*)cpu)->X[" + std::to_string(rs1) + "ULL]) >> (16ULL)) & 65535)) * (etiss_int16)((((*((RV32IMACFDXCoreV*)cpu)->X[" + std::to_string(rs2) + "ULL]) >> (16ULL)) & 65535))) & 0x7fffffff;\n";
+etiss_uint32 powerOf2 = (1ULL << (Is3 - 1ULL)) & 0x3fffffff;
+cp.code() += "etiss_int32 sum = product + (etiss_int32)(*((RV32IMACFDXCoreV*)cpu)->X[" + std::to_string(rd) + "ULL]) + " + std::to_string(powerOf2) + "ULL;\n";
+cp.code() += "etiss_int32 rounded = sum >> " + std::to_string(Is3) + "ULL;\n";
+cp.code() += "*((RV32IMACFDXCoreV*)cpu)->X[" + std::to_string(rd) + "ULL] = (((rounded) >> (0ULL)) & 4294967295);\n";
+cp.code() += "}\n";
+}
 cp.code() += "instr_exit_" + std::to_string(ic.current_address_) + ":\n";
 cp.code() += "cpu->instructionPointer = cpu->nextPc;\n";
 // -----------------------------------------------------------------------------

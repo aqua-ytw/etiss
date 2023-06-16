@@ -1,5 +1,5 @@
 /**
- * Generated on Mon, 29 May 2023 08:17:20 +0200.
+ * Generated on Fri, 16 Jun 2023 15:27:33 +0200.
  *
  * This file contains the architecture class for the RV32IMACFDXCoreV core architecture.
  */
@@ -123,6 +123,9 @@ void RV32IMACFDXCoreVArch::resetCPU(ETISS_CPU * cpu,etiss::uint64 * startpointer
 	rv32imacfdxcorevcpu->PRIV = 0;
 	rv32imacfdxcorevcpu->DPC = 0;
 	rv32imacfdxcorevcpu->FCSR = 0;
+	rv32imacfdxcorevcpu->lpstart_0 = 0;
+	rv32imacfdxcorevcpu->lpend_0 = 0;
+	rv32imacfdxcorevcpu->lpcount_0 = 0;
 	for (int i = 0; i < 32; ++i) {
 		rv32imacfdxcorevcpu->F[i] = 0;
 	}
@@ -161,6 +164,9 @@ void RV32IMACFDXCoreVArch::resetCPU(ETISS_CPU * cpu,etiss::uint64 * startpointer
  	rv32imacfdxcorevcpu->X[30] = &rv32imacfdxcorevcpu->T5;
  	rv32imacfdxcorevcpu->X[31] = &rv32imacfdxcorevcpu->T6;
  	rv32imacfdxcorevcpu->CSR[3] = &rv32imacfdxcorevcpu->FCSR;
+ 	rv32imacfdxcorevcpu->CSR[3264] = &rv32imacfdxcorevcpu->lpstart_0;
+ 	rv32imacfdxcorevcpu->CSR[3265] = &rv32imacfdxcorevcpu->lpend_0;
+ 	rv32imacfdxcorevcpu->CSR[3266] = &rv32imacfdxcorevcpu->lpcount_0;
 
  	rv32imacfdxcorevcpu->PRIV = 3;
  	rv32imacfdxcorevcpu->DPC = 0;
@@ -254,9 +260,7 @@ const char * const reg_name[] =
 	"X31",
 };
 
-etiss::instr::InstructionGroup ISA16_RV32IMACFDXCoreV("ISA16_RV32IMACFDXCoreV", 16);
-etiss::instr::InstructionClass ISA16_RV32IMACFDXCoreVClass(1, "ISA16_RV32IMACFDXCoreV", 16, ISA16_RV32IMACFDXCoreV);
 etiss::instr::InstructionGroup ISA32_RV32IMACFDXCoreV("ISA32_RV32IMACFDXCoreV", 32);
 etiss::instr::InstructionClass ISA32_RV32IMACFDXCoreVClass(1, "ISA32_RV32IMACFDXCoreV", 32, ISA32_RV32IMACFDXCoreV);
 
-etiss::instr::InstructionCollection RV32IMACFDXCoreVISA("RV32IMACFDXCoreVISA", ISA16_RV32IMACFDXCoreVClass, ISA32_RV32IMACFDXCoreVClass);
+etiss::instr::InstructionCollection RV32IMACFDXCoreVISA("RV32IMACFDXCoreVISA", ISA32_RV32IMACFDXCoreVClass);

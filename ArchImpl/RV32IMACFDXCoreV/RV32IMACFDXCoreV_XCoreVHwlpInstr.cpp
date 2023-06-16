@@ -1,7 +1,7 @@
 /**
  * Generated on Fri, 16 Jun 2023 15:27:33 +0200.
  *
- * This file contains the instruction behavior models of the Zifencei
+ * This file contains the instruction behavior models of the XCoreVHwlp
  * instruction set for the RV32IMACFDXCoreV core architecture.
  */
 
@@ -14,12 +14,12 @@ using namespace etiss;
 using namespace etiss::instr;
 
 
-// FENCE_I ---------------------------------------------------------------------
-static InstructionDefinition fence_i_rd_rs1_imm (
+// setup_zol_0 -----------------------------------------------------------------
+static InstructionDefinition setup_zol_0_rs1_uimm (
 	ISA32_RV32IMACFDXCoreV,
-	"fence_i",
-	(uint32_t) 0x00100f,
-	(uint32_t) 0x00707f,
+	"setup_zol_0",
+	(uint32_t) 0x00472b,
+	(uint32_t) 0x007fff,
 	[] (BitArray & ba,etiss::CodeSet & cs,InstructionContext & ic)
 	{
 
@@ -28,25 +28,21 @@ static InstructionDefinition fence_i_rd_rs1_imm (
 // -----------------------------------------------------------------------------
 
 // -----------------------------------------------------------------------------
-etiss_uint8 rd = 0;
-static BitArrayRange R_rd_0(11, 7);
-rd += R_rd_0.read(ba) << 0;
 etiss_uint8 rs1 = 0;
 static BitArrayRange R_rs1_0(19, 15);
 rs1 += R_rs1_0.read(ba) << 0;
-etiss_uint16 imm = 0;
-static BitArrayRange R_imm_0(31, 20);
-imm += R_imm_0.read(ba) << 0;
+etiss_uint16 uimm = 0;
+static BitArrayRange R_uimm_0(31, 20);
+uimm += R_uimm_0.read(ba) << 0;
 
 // -----------------------------------------------------------------------------
 
 	{
 		CodePart & cp = cs.append(CodePart::INITIALREQUIRED);
 
-		cp.code() = std::string("//FENCE_I\n");
+		cp.code() = std::string("//setup_zol_0\n");
 
 // -----------------------------------------------------------------------------
-cp.code() += "cpu->exception = ETISS_RETURNCODE_RELOADBLOCKS;\n";
 {
 cp.code() += "{\n";
 cp.code() += "cpu->nextPc = " + std::to_string(ic.current_address_ + 4ULL) + "ULL;\n";
@@ -65,20 +61,18 @@ cp.code() += "}\n";
 cp.code() += "}\n";
 }
 cp.code() += "cpu->nextPc = " + std::to_string(ic.current_address_ + 4ULL) + "ULL;\n";
-cp.code() += "((RV32IMACFDXCoreV*)cpu)->FENCE[1ULL] = " + std::to_string(imm) + "ULL;\n";
+{
+cp.code() += "{\n";
+cp.code() += "((RV32IMACFDXCoreV*)cpu)->lpstart_0 = " + std::to_string((etiss_uint32)((ic.current_address_ + 4ULL))) + "ULL;\n";
+cp.code() += "((RV32IMACFDXCoreV*)cpu)->lpend_0 = " + std::to_string((etiss_uint32)((ic.current_address_ + (uimm << 2ULL)))) + "ULL;\n";
+cp.code() += "((RV32IMACFDXCoreV*)cpu)->lpcount_0 = *((RV32IMACFDXCoreV*)cpu)->X[" + std::to_string(rs1) + "ULL];\n";
+cp.code() += "}\n";
+}
 cp.code() += "instr_exit_" + std::to_string(ic.current_address_) + ":\n";
 cp.code() += "cpu->instructionPointer = cpu->nextPc;\n";
 // -----------------------------------------------------------------------------
+		cp.getRegisterDependencies().add(reg_name[rs1], 32);
 		cp.getAffectedRegisters().add("instructionPointer", 32);
-	}
-	{
-		CodePart & cp = cs.append(CodePart::APPENDEDRETURNINGREQUIRED);
-
-		cp.code() = std::string("//FENCE_I\n");
-
-// -----------------------------------------------------------------------------
-cp.code() += "return cpu->exception;\n";
-// -----------------------------------------------------------------------------
 	}
 
 		return true;
@@ -87,21 +81,18 @@ cp.code() += "return cpu->exception;\n";
 	[] (BitArray & ba, Instruction & instr)
 	{
 // -----------------------------------------------------------------------------
-etiss_uint8 rd = 0;
-static BitArrayRange R_rd_0(11, 7);
-rd += R_rd_0.read(ba) << 0;
 etiss_uint8 rs1 = 0;
 static BitArrayRange R_rs1_0(19, 15);
 rs1 += R_rs1_0.read(ba) << 0;
-etiss_uint16 imm = 0;
-static BitArrayRange R_imm_0(31, 20);
-imm += R_imm_0.read(ba) << 0;
+etiss_uint16 uimm = 0;
+static BitArrayRange R_uimm_0(31, 20);
+uimm += R_uimm_0.read(ba) << 0;
 
 // -----------------------------------------------------------------------------
 
 		std::stringstream ss;
 // -----------------------------------------------------------------------------
-ss << "fence_i" << " # " << ba << (" [rd=" + std::to_string(rd) + " | rs1=" + std::to_string(rs1) + " | imm=" + std::to_string(imm) + "]");
+ss << "setup_zol_0" << " # " << ba << (" [rs1=" + std::to_string(rs1) + " | uimm=" + std::to_string(uimm) + "]");
 // -----------------------------------------------------------------------------
 		return ss.str();
 	}

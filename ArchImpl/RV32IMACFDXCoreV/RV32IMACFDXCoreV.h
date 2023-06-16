@@ -1,5 +1,5 @@
 /**
- * Generated on Mon, 29 May 2023 08:17:20 +0200.
+ * Generated on Fri, 16 Jun 2023 15:27:33 +0200.
  *
  * This file contains the registers for the RV32IMACFDXCoreV core architecture.
  */
@@ -54,6 +54,9 @@ struct RV32IMACFDXCoreV {
 	etiss_uint8 PRIV;
 	etiss_uint32 DPC;
 	etiss_uint32 FCSR;
+	etiss_uint32 lpstart_0;
+	etiss_uint32 lpend_0;
+	etiss_uint32 lpcount_0;
 	etiss_uint32 *CSR[4096];
 	etiss_uint32 ins_CSR[4096];
 	etiss_uint64 F[32];
