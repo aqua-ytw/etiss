@@ -1,5 +1,5 @@
 /**
- * Generated on Fri, 16 Jun 2023 15:27:33 +0200.
+ * Generated on Fri, 23 Jun 2023 12:53:13 +0200.
  *
  * This file contains the instruction behavior models of the tum_ret
  * instruction set for the RV32IMACFDXCoreV core architecture.
@@ -54,7 +54,6 @@ cp.code() += "}\n";
 cp.code() += "}\n";
 cp.code() += "}\n";
 }
-cp.code() += "cpu->nextPc = " + std::to_string(ic.current_address_ + 4ULL) + "ULL;\n";
 {
 cp.code() += "{\n";
 cp.code() += "if (((RV32IMACFDXCoreV*)cpu)->PRIV < 3LL) {\n";
@@ -150,7 +149,6 @@ cp.code() += "}\n";
 cp.code() += "}\n";
 cp.code() += "}\n";
 }
-cp.code() += "cpu->nextPc = " + std::to_string(ic.current_address_ + 4ULL) + "ULL;\n";
 {
 cp.code() += "{\n";
 cp.code() += "if (((RV32IMACFDXCoreV*)cpu)->PRIV < ((get_field(*((RV32IMACFDXCoreV*)cpu)->CSR[768LL], 4194304LL)) ? (3LL) : (1LL))) {\n";

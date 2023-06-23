@@ -1,5 +1,5 @@
 /**
- * Generated on Fri, 16 Jun 2023 15:27:33 +0200.
+ * Generated on Fri, 23 Jun 2023 12:53:13 +0200.
  *
  * This file contains the instruction behavior models of the Zifencei
  * instruction set for the RV32IMACFDXCoreV core architecture.
@@ -64,7 +64,6 @@ cp.code() += "}\n";
 cp.code() += "}\n";
 cp.code() += "}\n";
 }
-cp.code() += "cpu->nextPc = " + std::to_string(ic.current_address_ + 4ULL) + "ULL;\n";
 cp.code() += "((RV32IMACFDXCoreV*)cpu)->FENCE[1ULL] = " + std::to_string(imm) + "ULL;\n";
 cp.code() += "instr_exit_" + std::to_string(ic.current_address_) + ":\n";
 cp.code() += "cpu->instructionPointer = cpu->nextPc;\n";

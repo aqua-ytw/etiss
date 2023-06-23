@@ -1,5 +1,5 @@
 /**
- * Generated on Fri, 16 Jun 2023 15:27:33 +0200.
+ * Generated on Fri, 23 Jun 2023 12:53:13 +0200.
  *
  * This file contains the instruction behavior models of the RV32F
  * instruction set for the RV32IMACFDXCoreV core architecture.
@@ -63,7 +63,6 @@ cp.code() += "}\n";
 cp.code() += "}\n";
 cp.code() += "}\n";
 }
-cp.code() += "cpu->nextPc = " + std::to_string(ic.current_address_ + 4ULL) + "ULL;\n";
 {
 cp.code() += "{\n";
 cp.code() += "etiss_uint32 offs = *((RV32IMACFDXCoreV*)cpu)->X[" + std::to_string(rs1 % 32ULL) + "ULL] + " + std::to_string(((etiss_int16)(((etiss_int16)imm) << (4)) >> (4))) + "LL;\n";
@@ -178,7 +177,6 @@ cp.code() += "}\n";
 cp.code() += "}\n";
 cp.code() += "}\n";
 }
-cp.code() += "cpu->nextPc = " + std::to_string(ic.current_address_ + 4ULL) + "ULL;\n";
 {
 cp.code() += "{\n";
 cp.code() += "etiss_uint32 offs = *((RV32IMACFDXCoreV*)cpu)->X[" + std::to_string(rs1 % 32ULL) + "ULL] + " + std::to_string(((etiss_int16)(((etiss_int16)imm) << (4)) >> (4))) + "LL;\n";
@@ -294,7 +292,6 @@ cp.code() += "}\n";
 cp.code() += "}\n";
 cp.code() += "}\n";
 }
-cp.code() += "cpu->nextPc = " + std::to_string(ic.current_address_ + 4ULL) + "ULL;\n";
 {
 cp.code() += "{\n";
 {
@@ -400,7 +397,6 @@ cp.code() += "}\n";
 cp.code() += "}\n";
 cp.code() += "}\n";
 }
-cp.code() += "cpu->nextPc = " + std::to_string(ic.current_address_ + 4ULL) + "ULL;\n";
 {
 cp.code() += "{\n";
 {
@@ -506,7 +502,6 @@ cp.code() += "}\n";
 cp.code() += "}\n";
 cp.code() += "}\n";
 }
-cp.code() += "cpu->nextPc = " + std::to_string(ic.current_address_ + 4ULL) + "ULL;\n";
 {
 cp.code() += "{\n";
 {
@@ -615,7 +610,6 @@ cp.code() += "}\n";
 cp.code() += "}\n";
 cp.code() += "}\n";
 }
-cp.code() += "cpu->nextPc = " + std::to_string(ic.current_address_ + 4ULL) + "ULL;\n";
 {
 cp.code() += "{\n";
 {
@@ -721,7 +715,6 @@ cp.code() += "}\n";
 cp.code() += "}\n";
 cp.code() += "}\n";
 }
-cp.code() += "cpu->nextPc = " + std::to_string(ic.current_address_ + 4ULL) + "ULL;\n";
 {
 cp.code() += "{\n";
 {
@@ -823,7 +816,6 @@ cp.code() += "}\n";
 cp.code() += "}\n";
 cp.code() += "}\n";
 }
-cp.code() += "cpu->nextPc = " + std::to_string(ic.current_address_ + 4ULL) + "ULL;\n";
 {
 cp.code() += "{\n";
 {
@@ -925,7 +917,6 @@ cp.code() += "}\n";
 cp.code() += "}\n";
 cp.code() += "}\n";
 }
-cp.code() += "cpu->nextPc = " + std::to_string(ic.current_address_ + 4ULL) + "ULL;\n";
 {
 cp.code() += "{\n";
 {
@@ -1027,7 +1018,6 @@ cp.code() += "}\n";
 cp.code() += "}\n";
 cp.code() += "}\n";
 }
-cp.code() += "cpu->nextPc = " + std::to_string(ic.current_address_ + 4ULL) + "ULL;\n";
 {
 cp.code() += "{\n";
 {
@@ -1126,7 +1116,6 @@ cp.code() += "}\n";
 cp.code() += "}\n";
 cp.code() += "}\n";
 }
-cp.code() += "cpu->nextPc = " + std::to_string(ic.current_address_ + 4ULL) + "ULL;\n";
 {
 cp.code() += "{\n";
 {
@@ -1221,7 +1210,6 @@ cp.code() += "}\n";
 cp.code() += "}\n";
 cp.code() += "}\n";
 }
-cp.code() += "cpu->nextPc = " + std::to_string(ic.current_address_ + 4ULL) + "ULL;\n";
 {
 cp.code() += "{\n";
 {
@@ -1315,7 +1303,6 @@ cp.code() += "}\n";
 cp.code() += "}\n";
 cp.code() += "}\n";
 }
-cp.code() += "cpu->nextPc = " + std::to_string(ic.current_address_ + 4ULL) + "ULL;\n";
 {
 cp.code() += "{\n";
 {
@@ -1409,7 +1396,6 @@ cp.code() += "}\n";
 cp.code() += "}\n";
 cp.code() += "}\n";
 }
-cp.code() += "cpu->nextPc = " + std::to_string(ic.current_address_ + 4ULL) + "ULL;\n";
 {
 cp.code() += "{\n";
 {
@@ -1503,7 +1489,6 @@ cp.code() += "}\n";
 cp.code() += "}\n";
 cp.code() += "}\n";
 }
-cp.code() += "cpu->nextPc = " + std::to_string(ic.current_address_ + 4ULL) + "ULL;\n";
 {
 cp.code() += "{\n";
 {
@@ -1599,7 +1584,6 @@ cp.code() += "}\n";
 cp.code() += "}\n";
 cp.code() += "}\n";
 }
-cp.code() += "cpu->nextPc = " + std::to_string(ic.current_address_ + 4ULL) + "ULL;\n";
 {
 cp.code() += "{\n";
 {
@@ -1695,7 +1679,6 @@ cp.code() += "}\n";
 cp.code() += "}\n";
 cp.code() += "}\n";
 }
-cp.code() += "cpu->nextPc = " + std::to_string(ic.current_address_ + 4ULL) + "ULL;\n";
 {
 cp.code() += "{\n";
 cp.code() += "etiss_int32 res = 0ULL;\n";
@@ -1794,7 +1777,6 @@ cp.code() += "}\n";
 cp.code() += "}\n";
 cp.code() += "}\n";
 }
-cp.code() += "cpu->nextPc = " + std::to_string(ic.current_address_ + 4ULL) + "ULL;\n";
 {
 cp.code() += "{\n";
 cp.code() += "etiss_uint32 res = 0ULL;\n";
@@ -1893,7 +1875,6 @@ cp.code() += "}\n";
 cp.code() += "}\n";
 cp.code() += "}\n";
 }
-cp.code() += "cpu->nextPc = " + std::to_string(ic.current_address_ + 4ULL) + "ULL;\n";
 {
 cp.code() += "{\n";
 cp.code() += "etiss_uint32 res = 0ULL;\n";
@@ -1993,7 +1974,6 @@ cp.code() += "}\n";
 cp.code() += "}\n";
 cp.code() += "}\n";
 }
-cp.code() += "cpu->nextPc = " + std::to_string(ic.current_address_ + 4ULL) + "ULL;\n";
 {
 cp.code() += "{\n";
 cp.code() += "etiss_uint32 res = 0ULL;\n";
@@ -2093,7 +2073,6 @@ cp.code() += "}\n";
 cp.code() += "}\n";
 cp.code() += "}\n";
 }
-cp.code() += "cpu->nextPc = " + std::to_string(ic.current_address_ + 4ULL) + "ULL;\n";
 {
 cp.code() += "{\n";
 cp.code() += "etiss_uint32 res = 0ULL;\n";
@@ -2190,7 +2169,6 @@ cp.code() += "}\n";
 cp.code() += "}\n";
 cp.code() += "}\n";
 }
-cp.code() += "cpu->nextPc = " + std::to_string(ic.current_address_ + 4ULL) + "ULL;\n";
 {
 cp.code() += "{\n";
 cp.code() += "etiss_uint32 res = 0ULL;\n";
@@ -2279,7 +2257,6 @@ cp.code() += "}\n";
 cp.code() += "}\n";
 cp.code() += "}\n";
 }
-cp.code() += "cpu->nextPc = " + std::to_string(ic.current_address_ + 4ULL) + "ULL;\n";
 {
 cp.code() += "{\n";
 {
@@ -2372,7 +2349,6 @@ cp.code() += "}\n";
 cp.code() += "}\n";
 cp.code() += "}\n";
 }
-cp.code() += "cpu->nextPc = " + std::to_string(ic.current_address_ + 4ULL) + "ULL;\n";
 {
 cp.code() += "{\n";
 {
@@ -2462,7 +2438,6 @@ cp.code() += "}\n";
 cp.code() += "}\n";
 cp.code() += "}\n";
 }
-cp.code() += "cpu->nextPc = " + std::to_string(ic.current_address_ + 4ULL) + "ULL;\n";
 {
 cp.code() += "{\n";
 if ((rd % 32ULL) != 0ULL) {
@@ -2546,7 +2521,6 @@ cp.code() += "}\n";
 cp.code() += "}\n";
 cp.code() += "}\n";
 }
-cp.code() += "cpu->nextPc = " + std::to_string(ic.current_address_ + 4ULL) + "ULL;\n";
 {
 cp.code() += "{\n";
 {

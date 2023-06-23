@@ -1,5 +1,5 @@
 /**
- * Generated on Fri, 16 Jun 2023 15:27:33 +0200.
+ * Generated on Fri, 23 Jun 2023 12:53:13 +0200.
  *
  * This file contains the instruction behavior models of the XCoreVMac
  * instruction set for the RV32IMACFDXCoreV core architecture.
@@ -63,7 +63,6 @@ cp.code() += "}\n";
 cp.code() += "}\n";
 cp.code() += "}\n";
 }
-cp.code() += "cpu->nextPc = " + std::to_string(ic.current_address_ + 4ULL) + "ULL;\n";
 {
 cp.code() += "{\n";
 cp.code() += "etiss_int64 result = (etiss_int32)(*((RV32IMACFDXCoreV*)cpu)->X[" + std::to_string(rs1) + "ULL]) * (etiss_int32)(*((RV32IMACFDXCoreV*)cpu)->X[" + std::to_string(rs2) + "ULL]) + (etiss_int32)(*((RV32IMACFDXCoreV*)cpu)->X[" + std::to_string(rd) + "ULL]);\n";
@@ -157,7 +156,6 @@ cp.code() += "}\n";
 cp.code() += "}\n";
 cp.code() += "}\n";
 }
-cp.code() += "cpu->nextPc = " + std::to_string(ic.current_address_ + 4ULL) + "ULL;\n";
 {
 cp.code() += "{\n";
 cp.code() += "etiss_int64 result = (etiss_int32)(*((RV32IMACFDXCoreV*)cpu)->X[" + std::to_string(rd) + "ULL]) - (etiss_int32)(*((RV32IMACFDXCoreV*)cpu)->X[" + std::to_string(rs1) + "ULL]) * (etiss_int32)(*((RV32IMACFDXCoreV*)cpu)->X[" + std::to_string(rs2) + "ULL]);\n";
@@ -254,7 +252,6 @@ cp.code() += "}\n";
 cp.code() += "}\n";
 cp.code() += "}\n";
 }
-cp.code() += "cpu->nextPc = " + std::to_string(ic.current_address_ + 4ULL) + "ULL;\n";
 {
 cp.code() += "{\n";
 cp.code() += "etiss_uint32 result = ((etiss_uint16)((((*((RV32IMACFDXCoreV*)cpu)->X[" + std::to_string(rs1) + "ULL]) >> (0ULL)) & 65535)) * (etiss_uint16)((((*((RV32IMACFDXCoreV*)cpu)->X[" + std::to_string(rs2) + "ULL]) >> (0ULL)) & 65535))) >> " + std::to_string(Is3) + "ULL;\n";
@@ -353,7 +350,6 @@ cp.code() += "}\n";
 cp.code() += "}\n";
 cp.code() += "}\n";
 }
-cp.code() += "cpu->nextPc = " + std::to_string(ic.current_address_ + 4ULL) + "ULL;\n";
 {
 cp.code() += "{\n";
 cp.code() += "etiss_uint32 result = ((etiss_uint16)((((*((RV32IMACFDXCoreV*)cpu)->X[" + std::to_string(rs1) + "ULL]) >> (16ULL)) & 65535)) * (etiss_uint16)((((*((RV32IMACFDXCoreV*)cpu)->X[" + std::to_string(rs2) + "ULL]) >> (16ULL)) & 65535))) >> " + std::to_string(Is3) + "ULL;\n";
@@ -452,7 +448,6 @@ cp.code() += "}\n";
 cp.code() += "}\n";
 cp.code() += "}\n";
 }
-cp.code() += "cpu->nextPc = " + std::to_string(ic.current_address_ + 4ULL) + "ULL;\n";
 {
 cp.code() += "{\n";
 cp.code() += "etiss_int32 result = ((etiss_int16)((((*((RV32IMACFDXCoreV*)cpu)->X[" + std::to_string(rs1) + "ULL]) >> (0ULL)) & 65535)) * (etiss_int16)((((*((RV32IMACFDXCoreV*)cpu)->X[" + std::to_string(rs2) + "ULL]) >> (0ULL)) & 65535))) >> " + std::to_string(Is3) + "ULL;\n";
@@ -551,7 +546,6 @@ cp.code() += "}\n";
 cp.code() += "}\n";
 cp.code() += "}\n";
 }
-cp.code() += "cpu->nextPc = " + std::to_string(ic.current_address_ + 4ULL) + "ULL;\n";
 {
 cp.code() += "{\n";
 cp.code() += "etiss_int32 result = ((etiss_int16)((((*((RV32IMACFDXCoreV*)cpu)->X[" + std::to_string(rs1) + "ULL]) >> (16ULL)) & 65535)) * (etiss_int16)((((*((RV32IMACFDXCoreV*)cpu)->X[" + std::to_string(rs2) + "ULL]) >> (16ULL)) & 65535))) >> " + std::to_string(Is3) + "ULL;\n";
@@ -650,7 +644,6 @@ cp.code() += "}\n";
 cp.code() += "}\n";
 cp.code() += "}\n";
 }
-cp.code() += "cpu->nextPc = " + std::to_string(ic.current_address_ + 4ULL) + "ULL;\n";
 {
 cp.code() += "{\n";
 cp.code() += "etiss_int32 product = ((etiss_uint16)((((*((RV32IMACFDXCoreV*)cpu)->X[" + std::to_string(rs1) + "ULL]) >> (0ULL)) & 65535)) * (etiss_uint16)((((*((RV32IMACFDXCoreV*)cpu)->X[" + std::to_string(rs2) + "ULL]) >> (0ULL)) & 65535))) & 0x7fffffff;\n";
@@ -750,7 +743,6 @@ cp.code() += "}\n";
 cp.code() += "}\n";
 cp.code() += "}\n";
 }
-cp.code() += "cpu->nextPc = " + std::to_string(ic.current_address_ + 4ULL) + "ULL;\n";
 {
 cp.code() += "{\n";
 cp.code() += "etiss_int32 product = ((etiss_uint16)((((*((RV32IMACFDXCoreV*)cpu)->X[" + std::to_string(rs1) + "ULL]) >> (16ULL)) & 65535)) * (etiss_uint16)((((*((RV32IMACFDXCoreV*)cpu)->X[" + std::to_string(rs2) + "ULL]) >> (16ULL)) & 65535))) & 0x7fffffff;\n";
@@ -850,7 +842,6 @@ cp.code() += "}\n";
 cp.code() += "}\n";
 cp.code() += "}\n";
 }
-cp.code() += "cpu->nextPc = " + std::to_string(ic.current_address_ + 4ULL) + "ULL;\n";
 {
 cp.code() += "{\n";
 cp.code() += "etiss_int32 product = ((etiss_int16)((((*((RV32IMACFDXCoreV*)cpu)->X[" + std::to_string(rs1) + "ULL]) >> (0ULL)) & 65535)) * (etiss_int16)((((*((RV32IMACFDXCoreV*)cpu)->X[" + std::to_string(rs2) + "ULL]) >> (0ULL)) & 65535))) & 0x7fffffff;\n";
@@ -950,7 +941,6 @@ cp.code() += "}\n";
 cp.code() += "}\n";
 cp.code() += "}\n";
 }
-cp.code() += "cpu->nextPc = " + std::to_string(ic.current_address_ + 4ULL) + "ULL;\n";
 {
 cp.code() += "{\n";
 cp.code() += "etiss_int32 product = ((etiss_int16)((((*((RV32IMACFDXCoreV*)cpu)->X[" + std::to_string(rs1) + "ULL]) >> (16ULL)) & 65535)) * (etiss_int16)((((*((RV32IMACFDXCoreV*)cpu)->X[" + std::to_string(rs2) + "ULL]) >> (16ULL)) & 65535))) & 0x7fffffff;\n";
@@ -1050,7 +1040,6 @@ cp.code() += "}\n";
 cp.code() += "}\n";
 cp.code() += "}\n";
 }
-cp.code() += "cpu->nextPc = " + std::to_string(ic.current_address_ + 4ULL) + "ULL;\n";
 {
 cp.code() += "{\n";
 cp.code() += "etiss_uint32 result = ((etiss_uint16)((((*((RV32IMACFDXCoreV*)cpu)->X[" + std::to_string(rs1) + "ULL]) >> (0ULL)) & 65535)) * (etiss_uint16)((((*((RV32IMACFDXCoreV*)cpu)->X[" + std::to_string(rs2) + "ULL]) >> (0ULL)) & 65535)) + (etiss_uint32)(*((RV32IMACFDXCoreV*)cpu)->X[" + std::to_string(rd) + "ULL])) >> " + std::to_string(Is3) + "ULL;\n";
@@ -1150,7 +1139,6 @@ cp.code() += "}\n";
 cp.code() += "}\n";
 cp.code() += "}\n";
 }
-cp.code() += "cpu->nextPc = " + std::to_string(ic.current_address_ + 4ULL) + "ULL;\n";
 {
 cp.code() += "{\n";
 cp.code() += "etiss_uint32 result = ((etiss_uint16)((((*((RV32IMACFDXCoreV*)cpu)->X[" + std::to_string(rs1) + "ULL]) >> (16ULL)) & 65535)) * (etiss_uint16)((((*((RV32IMACFDXCoreV*)cpu)->X[" + std::to_string(rs2) + "ULL]) >> (16ULL)) & 65535)) + (etiss_uint32)(*((RV32IMACFDXCoreV*)cpu)->X[" + std::to_string(rd) + "ULL])) >> " + std::to_string(Is3) + "ULL;\n";
@@ -1250,7 +1238,6 @@ cp.code() += "}\n";
 cp.code() += "}\n";
 cp.code() += "}\n";
 }
-cp.code() += "cpu->nextPc = " + std::to_string(ic.current_address_ + 4ULL) + "ULL;\n";
 {
 cp.code() += "{\n";
 cp.code() += "etiss_int32 result = ((etiss_int16)((((*((RV32IMACFDXCoreV*)cpu)->X[" + std::to_string(rs1) + "ULL]) >> (0ULL)) & 65535)) * (etiss_int16)((((*((RV32IMACFDXCoreV*)cpu)->X[" + std::to_string(rs2) + "ULL]) >> (0ULL)) & 65535)) + (etiss_int32)(*((RV32IMACFDXCoreV*)cpu)->X[" + std::to_string(rd) + "ULL])) >> " + std::to_string(Is3) + "ULL;\n";
@@ -1350,7 +1337,6 @@ cp.code() += "}\n";
 cp.code() += "}\n";
 cp.code() += "}\n";
 }
-cp.code() += "cpu->nextPc = " + std::to_string(ic.current_address_ + 4ULL) + "ULL;\n";
 {
 cp.code() += "{\n";
 cp.code() += "etiss_int32 result = ((etiss_int16)((((*((RV32IMACFDXCoreV*)cpu)->X[" + std::to_string(rs1) + "ULL]) >> (16ULL)) & 65535)) * (etiss_int16)((((*((RV32IMACFDXCoreV*)cpu)->X[" + std::to_string(rs2) + "ULL]) >> (16ULL)) & 65535)) + (etiss_int32)(*((RV32IMACFDXCoreV*)cpu)->X[" + std::to_string(rd) + "ULL])) >> " + std::to_string(Is3) + "ULL;\n";
@@ -1450,7 +1436,6 @@ cp.code() += "}\n";
 cp.code() += "}\n";
 cp.code() += "}\n";
 }
-cp.code() += "cpu->nextPc = " + std::to_string(ic.current_address_ + 4ULL) + "ULL;\n";
 {
 cp.code() += "{\n";
 cp.code() += "etiss_uint32 product = ((etiss_uint16)(((((*((RV32IMACFDXCoreV*)cpu)->X[" + std::to_string(rs1) + "ULL]) >> (0ULL)) & 65535))) * (etiss_uint16)(((((*((RV32IMACFDXCoreV*)cpu)->X[" + std::to_string(rs2) + "ULL]) >> (0ULL)) & 65535)))) & 0x3fffffff;\n";
@@ -1551,7 +1536,6 @@ cp.code() += "}\n";
 cp.code() += "}\n";
 cp.code() += "}\n";
 }
-cp.code() += "cpu->nextPc = " + std::to_string(ic.current_address_ + 4ULL) + "ULL;\n";
 {
 cp.code() += "{\n";
 cp.code() += "etiss_uint32 product = ((etiss_uint16)(((((*((RV32IMACFDXCoreV*)cpu)->X[" + std::to_string(rs1) + "ULL]) >> (16ULL)) & 65535))) * (etiss_uint16)(((((*((RV32IMACFDXCoreV*)cpu)->X[" + std::to_string(rs2) + "ULL]) >> (16ULL)) & 65535)))) & 0x3fffffff;\n";
@@ -1652,7 +1636,6 @@ cp.code() += "}\n";
 cp.code() += "}\n";
 cp.code() += "}\n";
 }
-cp.code() += "cpu->nextPc = " + std::to_string(ic.current_address_ + 4ULL) + "ULL;\n";
 {
 cp.code() += "{\n";
 cp.code() += "etiss_int32 product = ((etiss_int16)((((*((RV32IMACFDXCoreV*)cpu)->X[" + std::to_string(rs1) + "ULL]) >> (0ULL)) & 65535)) * (etiss_int16)((((*((RV32IMACFDXCoreV*)cpu)->X[" + std::to_string(rs2) + "ULL]) >> (0ULL)) & 65535))) & 0x7fffffff;\n";
@@ -1753,7 +1736,6 @@ cp.code() += "}\n";
 cp.code() += "}\n";
 cp.code() += "}\n";
 }
-cp.code() += "cpu->nextPc = " + std::to_string(ic.current_address_ + 4ULL) + "ULL;\n";
 {
 cp.code() += "{\n";
 cp.code() += "etiss_int32 product = ((etiss_int16)((((*((RV32IMACFDXCoreV*)cpu)->X[" + std::to_string(rs1) + "ULL]) >> (16ULL)) & 65535)) * (etiss_int16)((((*((RV32IMACFDXCoreV*)cpu)->X[" + std::to_string(rs2) + "ULL]) >> (16ULL)) & 65535))) & 0x7fffffff;\n";
